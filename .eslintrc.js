@@ -11,5 +11,16 @@ module.exports = {
   plugins: [
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'vue/max-attributes-per-line': ['warn', {
+      singleline: 1,
+      multiline: {
+        max: 1,
+        allowFirstLine: false
+      }
+    }],
+    'vue/comment-directive': ['warn', {
+      reportUnusedDisableDirectives: false
+    }]
+  }
 }
