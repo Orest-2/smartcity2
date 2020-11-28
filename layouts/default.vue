@@ -55,9 +55,11 @@
     </v-app-bar>
 
     <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <client-only>
+        <v-container>
+          <nuxt />
+        </v-container>
+      </client-only>
     </v-main>
 
     <v-footer app>

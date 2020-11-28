@@ -56,7 +56,7 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.darken2
         },
         light: {
           primary: colors.blue.lighten2,
@@ -65,7 +65,7 @@ export default {
           info: colors.teal.darken1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          success: colors.green.darken2
         },
         options: {
           themeCache: {
