@@ -18,9 +18,6 @@ module.exports = {
         max: 1,
         allowFirstLine: false
       }
-    }],
-    'vue/comment-directive': ['warn', {
-      reportUnusedDisableDirectives: false
     }]
   }
 }
