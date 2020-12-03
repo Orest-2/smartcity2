@@ -26,50 +26,11 @@
         </v-toolbar>
 
         <v-expansion-panels>
-          <v-expansion-panel
-            v-for="(item,i) in 5"
+          <ModelBox
+            v-for="(model, i) in models"
             :key="i"
-          >
-            <v-expansion-panel-header disable-icon-rotate>
-              Model {{ item }}
-
-              <template #actions>
-                <v-row
-                  align-content="center"
-                  justify="center"
-                >
-                  <v-col
-                    class="pa-0 mr-2"
-                    align-self="center"
-                    @click.stop
-                  >
-                    <v-switch
-                      color="success"
-                      hide-details
-                      class="pa-0 ma-0"
-                    />
-                  </v-col>
-
-                  <v-col
-                    class="pa-0"
-                    align-self="center"
-                  >
-                    <v-btn
-                      icon
-                      @click.stop="remove"
-                    >
-                      <v-icon color="error">
-                        mdi-trash-can
-                      </v-icon>
-                    </v-btn>
-                  </v-col>
-                </v-row>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </v-expansion-panel-content>
-          </v-expansion-panel>
+            :model="model"
+          />
         </v-expansion-panels>
       </v-card>
     </v-col>
@@ -78,12 +39,24 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
+import { RootState } from '~/types/store'
+
+import ModelBox from '~/components/settings/model-box.vue'
+
+const state = {
+  models: (s: RootState) => s.settings.models
+}
+
+export type State = typeof state
 
 export default Vue.extend({
-  methods: {
-    remove () {
-      // console.log('remove')
-    }
+  components: {
+    ModelBox
+  },
+
+  computed: {
+    ...mapState<RootState, State>(state)
   },
 
   head: {
