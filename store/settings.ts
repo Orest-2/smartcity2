@@ -110,7 +110,7 @@ export const actions: ActionTree<SettingsState, RootState> = {
     const c: Criterion = {
       answers: [],
       title: '',
-      desiredValues: 0,
+      desiredValue: 0,
       ...criterion
     }
     commit('ADD_CRITERION', { mi: modelIndex, c })
