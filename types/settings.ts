@@ -1,17 +1,18 @@
 
-export interface Question {
+export interface Answers {
   title: string;
   score: number;
 }
 export interface Criterion {
   title: string;
-  desiredValues: number;
-  questions: Question[];
+  desiredValue: number;
+  answers: Answers[];
 }
 
+export type ModelTypes = 'tests' | 'values'
 export interface Model {
   title: string;
-  type: string;
+  type: ModelTypes;
   active: boolean;
   criteria: Criterion[];
 }

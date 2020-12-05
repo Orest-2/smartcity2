@@ -6,8 +6,7 @@
     >
       <v-row>
         <v-col
-          cols="12"
-          sm="6"
+          cols="6"
           md="3"
           class="pa-0"
           @click.stop
@@ -56,7 +55,10 @@
     </v-expansion-panel-header>
 
     <v-expansion-panel-content>
-      {{ model.type }}
+      <criteria
+        :model="model"
+        :model-index="index"
+      />
     </v-expansion-panel-content>
   </v-expansion-panel>
 </template>
@@ -64,9 +66,14 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { mapActions } from 'vuex'
+
+import criteria from './criteria.vue'
+
 import { Model } from '~/types/settings'
 
 export default Vue.extend({
+  components: { criteria },
+
   props: {
     model: {
       type: Object as PropType<Model>,
@@ -101,12 +108,21 @@ export default Vue.extend({
 
   methods: {
     ...mapActions({
-      updateModel: 'settings/updateModel'
+      updateModel: 'settings/updateModel',
+      removeModel: 'settings/removeModel'
     }),
 
     remove () {
-      // console.log('remove')
+      this.removeModel({ index: this.index })
     }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+::v-deep {
+  .v-expansion-panel-content__wrap {
+    padding: 0;
+  }
+}
+</style>
