@@ -1,12 +1,12 @@
 
-export interface Answers {
+export interface Answer {
   title: string;
   score: number;
 }
 export interface Criterion {
   title: string;
   desiredValue: number;
-  answers: Answers[];
+  answers: Answer[];
 }
 
 export type ModelTypes = 'tests' | 'values'

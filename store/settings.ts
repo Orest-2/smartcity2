@@ -1,6 +1,6 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { RootState } from '~/types/store'
-import { Criterion, Model } from '~/types/settings'
+import { Answer, Criterion, Model } from '~/types/settings'
 
 const tests: Model[] = [
   {
@@ -90,6 +90,21 @@ export const mutations: MutationTree<SettingsState> = {
 
   REMOVE_CRITERION (state, { mi, ci }) {
     state.models[mi].criteria.splice(ci, 1)
+  },
+
+  ADD_ANSWER (state, { mi, ci, a }) {
+    state.models[mi].criteria[ci].answers.push(a)
+  },
+
+  UPDATE_ANSWER (state, { mi, ci, ai, k, v }) {
+    state.models[mi].criteria[ci].answers[ai] = {
+      ...state.models[mi].criteria[ci].answers[ai],
+      [k]: v
+    }
+  },
+
+  REMOVE_ANSWER (state, { mi, ci, ai }) {
+    state.models[mi].criteria[ci].answers.splice(ai, 1)
   }
 }
 
@@ -99,7 +114,11 @@ export const actions: ActionTree<SettingsState, RootState> = {
   },
 
   updateModel ({ commit }, { index, key, value }) {
-    commit('UPDATE_MODEL', { i: index, k: key, v: value })
+    commit('UPDATE_MODEL', {
+      i: index,
+      k: key,
+      v: value
+    })
   },
 
   removeModel ({ commit }, { index }) {
@@ -117,10 +136,49 @@ export const actions: ActionTree<SettingsState, RootState> = {
   },
 
   updateCriterion ({ commit }, { modelIndex, criterionIndex, key, value }) {
-    commit('UPDATE_CRITERION', { mi: modelIndex, ci: criterionIndex, k: key, v: value })
+    commit('UPDATE_CRITERION', {
+      mi: modelIndex,
+      ci: criterionIndex,
+      k: key,
+      v: value
+    })
   },
 
   removeCriterion ({ commit }, { modelIndex, criterionIndex }) {
-    commit('REMOVE_CRITERION', { mi: modelIndex, ci: criterionIndex })
+    commit('REMOVE_CRITERION', {
+      mi: modelIndex,
+      ci: criterionIndex
+    })
+  },
+
+  addAnswer ({ commit }, { modelIndex, criterionIndex, answer }) {
+    const a: Answer = {
+      title: '',
+      score: 0,
+      ...answer
+    }
+    commit('ADD_ANSWER', {
+      mi: modelIndex,
+      ci: criterionIndex,
+      a
+    })
+  },
+
+  updateAnswer ({ commit }, { modelIndex, criterionIndex, answerIndex, key, value }) {
+    commit('UPDATE_ANSWER', {
+      mi: modelIndex,
+      ci: criterionIndex,
+      ai: answerIndex,
+      k: key,
+      v: value
+    })
+  },
+
+  removeAnswer ({ commit }, { modelIndex, criterionIndex, answerIndex }) {
+    commit('REMOVE_ANSWER', {
+      mi: modelIndex,
+      ci: criterionIndex,
+      ai: answerIndex
+    })
   }
 }

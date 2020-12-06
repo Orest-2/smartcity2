@@ -1,26 +1,27 @@
 <template>
-  <v-card>
-    <v-card-title class="pb-1">
-      <span class="subtitle-1">Criteria</span>
+  <v-card class="elevation-0">
+    <v-card-title class="pb-1 pt-1">
+      <span class="subtitle-2">Answers</span>
     </v-card-title>
     <v-card-text>
       <v-container class="py-0">
-        <criteria-item
-          v-for="(criterion, i) in criteria"
+        <answers-item
+          v-for="(answer, i) in answers"
           :key="i"
-          :criterion="criterion"
+          :answer="answer"
+          :criterion-index="criterionIndex"
           :model-index="modelIndex"
-          :model-type="type"
         />
 
         <v-row>
-          <v-divider />
+          <v-divider class="my-1" />
         </v-row>
 
         <v-row class="mt-2">
           <v-btn
             color="second"
             block
+            text
             @click="add"
           >
             <v-icon
@@ -29,7 +30,7 @@
             >
               mdi-plus
             </v-icon>
-            Add one more criterion
+            Add one more answer
           </v-btn>
         </v-row>
       </v-container>
@@ -41,11 +42,12 @@
 import Vue, { PropType } from 'vue'
 import { mapActions } from 'vuex'
 
-import criteriaItem from './criteria-item.vue'
-import { Criterion, Model } from '~/types/settings'
+import answersItem from './answers-item.vue'
+
+import { Answer } from '~/types/settings'
 
 export default Vue.extend({
-  components: { criteriaItem },
+  components: { answersItem },
 
   props: {
     modelIndex: {
@@ -53,31 +55,32 @@ export default Vue.extend({
       required: true,
       default: 0
     },
-    model: {
-      type: Object as PropType<Model>,
+    criterionIndex: {
+      type: Number as PropType<number>,
       required: true,
-      default: {} as Model
-    }
-  },
-
-  computed: {
-    criteria (): Criterion[] {
-      return this.model.criteria
+      default: 0
     },
-
-    type (): string {
-      return this.model.type
+    answers: {
+      type: Array as PropType<Answer[]>,
+      required: true,
+      default: [] as Answer[]
     }
   },
 
   methods: {
     ...mapActions({
-      addCriterion: 'settings/addCriterion'
+      addAnswer: 'settings/addAnswer'
     }),
 
     add () {
-      this.addCriterion({ modelIndex: this.modelIndex })
+      this.addAnswer({
+        modelIndex: this.modelIndex,
+        criterionIndex: this.criterionIndex
+      })
     }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+</style>

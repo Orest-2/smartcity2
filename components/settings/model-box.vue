@@ -55,6 +55,11 @@
     </v-expansion-panel-header>
 
     <v-expansion-panel-content>
+      <v-col>
+        <div>
+          <span>Type:</span> {{ model.type }}
+        </div>
+      </v-col>
       <criteria
         :model="model"
         :model-index="index"

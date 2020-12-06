@@ -7,12 +7,16 @@
     <v-hover>
       <template #default="{ hover }">
         <v-row
-          :class="`elevation-${hover ? 1 : 0}`"
+          :class="{
+            'elevation-1': hover,
+            'accent': hover,
+          }"
           class="my-1"
         >
           <v-col
             cols="12"
             md="7"
+            class="pb-0"
           >
             <v-text-field
               v-model="title"
@@ -20,10 +24,11 @@
               hide-details="auto"
             />
           </v-col>
-          <v-col>
+          <v-col class="pb-0">
             <v-text-field
               v-if="modelType === 'values'"
               v-model="desiredValue"
+              type="number"
               label="Desired value"
               hide-details="auto"
             />
@@ -38,6 +43,7 @@
             cols="12"
             md="1"
             align-self="center"
+            class="pb-0"
           >
             <v-row
               justify="end"
@@ -56,6 +62,17 @@
               </div>
             </v-row>
           </v-col>
+          <v-col
+            cols="12"
+            class="px-0 pt-0"
+          >
+            <answers
+              v-if="modelType === 'tests'"
+              :answers="answers"
+              :criterion-index="index"
+              :model-index="modelIndex"
+            />
+          </v-col>
         </v-row>
       </template>
     </v-hover>
@@ -66,10 +83,13 @@
 import Vue, { PropType } from 'vue'
 import { mapActions } from 'vuex'
 
+import answers from './answers.vue'
+
 import { desiredValueOptions } from '~/constants/settings'
-import { Criterion, ModelTypes } from '~/types/settings'
+import { Answer, Criterion, ModelTypes } from '~/types/settings'
 
 export default Vue.extend({
+  components: { answers },
   props: {
     criterion: {
       type: Object as PropType<Criterion>,
@@ -97,6 +117,10 @@ export default Vue.extend({
   computed: {
     index (): number {
       return this.$vnode.key as number
+    },
+
+    answers (): Answer[] {
+      return this.criterion.answers
     },
 
     title: {
