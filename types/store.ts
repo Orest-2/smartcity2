@@ -1,5 +1,7 @@
+import { HomeState } from '~/store/home'
 import { SettingsState } from '~/store/settings'
 
 export type RootState = {
-  settings: SettingsState
+  home: HomeState;
+  settings: SettingsState;
 }

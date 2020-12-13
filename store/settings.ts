@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { RootState } from '~/types/store'
 import { Answer, Criterion, Model } from '~/types/settings'
@@ -59,6 +60,9 @@ export const state = () => ({
 export type SettingsState = ReturnType<typeof state>
 
 export const getters: GetterTree<SettingsState, RootState> = {
+  getActiveModels (state) {
+    return state.models.filter(m => m.active)
+  }
 }
 
 export const mutations: MutationTree<SettingsState> = {
@@ -67,10 +71,12 @@ export const mutations: MutationTree<SettingsState> = {
   },
 
   UPDATE_MODEL (state, { i, k, v }) {
-    state.models[i] = {
-      ...state.models[i],
-      [k]: v
-    }
+    Vue.set(state.models, i,
+      {
+        ...state.models[i],
+        [k]: v
+      }
+    )
   },
 
   REMOVE_MODEL (state, { i }) {
@@ -82,10 +88,12 @@ export const mutations: MutationTree<SettingsState> = {
   },
 
   UPDATE_CRITERION (state, { mi, ci, k, v }) {
-    state.models[mi].criteria[ci] = {
-      ...state.models[mi].criteria[ci],
-      [k]: v
-    }
+    Vue.set(state.models[mi].criteria, ci,
+      {
+        ...state.models[mi].criteria[ci],
+        [k]: v
+      }
+    )
   },
 
   REMOVE_CRITERION (state, { mi, ci }) {
@@ -97,10 +105,12 @@ export const mutations: MutationTree<SettingsState> = {
   },
 
   UPDATE_ANSWER (state, { mi, ci, ai, k, v }) {
-    state.models[mi].criteria[ci].answers[ai] = {
-      ...state.models[mi].criteria[ci].answers[ai],
-      [k]: v
-    }
+    Vue.set(state.models[mi].criteria[ci].answers, ai,
+      {
+        ...state.models[mi].criteria[ci].answers[ai],
+        [k]: v
+      }
+    )
   },
 
   REMOVE_ANSWER (state, { mi, ci, ai }) {
