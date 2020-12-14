@@ -90,6 +90,7 @@ import { Answer, Criterion, ModelTypes } from '~/types/settings'
 
 export default Vue.extend({
   components: { answers },
+
   props: {
     criterion: {
       type: Object as PropType<Criterion>,

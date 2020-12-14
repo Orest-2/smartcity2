@@ -27,7 +27,7 @@ const tests: Model[] = [
           { score: 5, title: 'Зрозуміти мету і значення цього проекту (5 балів)' },
           { score: 10, title: 'Розкрити мету і цінності учасників робочої групи (10 балів)' },
           { score: 15, title: 'Визначити, як ми збираємося розробляти даний проект (15 балів)' },
-          { score: 25, title: 'Зрозуміти, яку користь цей проект може принести для нашої групи (20 балів)' },
+          { score: 20, title: 'Зрозуміти, яку користь цей проект може принести для нашої групи (20 балів)' },
           { score: 30, title: 'Щоб робота над проектом була організована і зрушила з місця (30 балів)' }
         ]
       }
@@ -62,6 +62,10 @@ export type SettingsState = ReturnType<typeof state>
 export const getters: GetterTree<SettingsState, RootState> = {
   getActiveModels (state) {
     return state.models.filter(m => m.active)
+  },
+
+  getModel (s) {
+    return (mi: number) => s.models[mi]
   }
 }
 

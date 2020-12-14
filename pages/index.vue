@@ -19,57 +19,11 @@
           </v-row>
         </div>
 
-        <v-card
-          v-for="(m, i) in models"
-          :key="i"
-          class="mb-2"
-        >
-          <v-row>
-            <v-col
-              cols="12"
-              md="1"
-              class="d-flex align-center justify-center"
-            >
-              <span>
-                {{ m.title }}
-              </span>
-            </v-col>
-            <v-col>
-              <v-row
-                v-for="(c, ci) in m.criteria"
-                :key="ci"
-              >
-                <v-col cols="12">
-                  {{ c.title }}
-                </v-col>
-
-                <v-col cols="12">
-                  <v-row>
-                    <v-col
-                      v-for="(n, ni) in sn"
-                      :key="ni"
-                      cols="12"
-                      md="2"
-                    >
-                      <v-select
-                        v-if="m.type === 'tests'"
-                        :items="toOptionArray(c.answers)"
-                        :label=" `e${n} Answer`"
-                        hide-details="auto"
-                      />
-                      <v-text-field
-                        v-if="m.type === 'values'"
-                        type="number"
-                        :label=" `e${n} Answer`"
-                        hide-details="auto"
-                      />
-                    </v-col>
-                  </v-row>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-card>
+        <model
+          v-for="(m, mi) in models"
+          :key="mi"
+          :model="m"
+        />
       </v-card>
     </v-col>
   </v-row>
@@ -78,7 +32,10 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
+
 import { RootState } from '~/types/store'
+
+import model from '~/components/home/model.vue'
 
 const state = {
   specialistN: (s: RootState) => s.home.specialistN
@@ -87,6 +44,8 @@ const state = {
 export type State = typeof state
 
 export default Vue.extend({
+  components: { model },
+
   computed: {
     ...mapState<RootState, State>(state),
 
@@ -104,14 +63,15 @@ export default Vue.extend({
     }
   },
 
+  created () {
+    this.initData()
+  },
+
   methods: {
     ...mapActions({
-      setSpecialistN: 'home/setSpecialistN'
-    }),
-
-    toOptionArray (arr: any[]): any[] {
-      return arr.map((el, i) => ({ text: `${i + 1}. ${el.title}`, value: el.score }))
-    }
+      setSpecialistN: 'home/setSpecialistN',
+      initData: 'home/initData'
+    })
   },
 
   head: {
