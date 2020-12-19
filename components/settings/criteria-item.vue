@@ -32,12 +32,6 @@
               label="Desired value"
               hide-details="auto"
             />
-            <v-select
-              v-if="modelType === 'tests'"
-              v-model="desiredValue"
-              label="Desired value"
-              :items="desiredValueOptions"
-            />
           </v-col>
           <v-col
             cols="12"
@@ -85,7 +79,6 @@ import { mapActions } from 'vuex'
 
 import answers from './answers.vue'
 
-import { desiredValueOptions } from '~/constants/settings'
 import { Answer, Criterion, ModelTypes } from '~/types/settings'
 
 export default Vue.extend({
@@ -106,12 +99,6 @@ export default Vue.extend({
       type: String as PropType<ModelTypes>,
       required: true,
       default: ''
-    }
-  },
-
-  data () {
-    return {
-      desiredValueOptions
     }
   },
 

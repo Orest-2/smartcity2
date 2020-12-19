@@ -5,6 +5,8 @@ export const mock: Model[] = [
     active: true,
     type: 'tests',
     title: 'M1',
+    desiredValue: 0.9,
+    weightingFactor: 8,
     criteria: [
       {
         title: 'Коли між людьми відбувається конфлікт на ґрунті ідей, я віддаю перевагу тій стороні, що:',
@@ -100,30 +102,32 @@ export const mock: Model[] = [
     active: true,
     type: 'values',
     title: 'M2',
+    desiredValue: 0,
+    weightingFactor: 9,
     criteria: [
       {
         title: 'Авіаційна метеорологія',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       },
       {
         title: 'Аеродинаміка та польотна механіка',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       },
       {
         title: 'Маса та рівновага літальних апаратів',
-        desiredValue: 0,
+        desiredValue: 92,
         answers: []
       },
       {
         title: 'Повітряний зв’язок',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       },
       {
         title: 'Авіаційна техніка',
-        desiredValue: 0,
+        desiredValue: 97,
         answers: []
       }
     ]
@@ -132,20 +136,22 @@ export const mock: Model[] = [
     active: true,
     type: 'values',
     title: 'M3',
+    desiredValue: 0,
+    weightingFactor: 10,
     criteria: [
       {
         title: 'Практичне навчання з радіолокаційного контролю',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       },
       {
         title: 'Навчання на пілотному симуляторі',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       },
       {
         title: 'Навчання основам польотів',
-        desiredValue: 0,
+        desiredValue: 93,
         answers: []
       }
     ]
@@ -154,25 +160,27 @@ export const mock: Model[] = [
     active: true,
     type: 'values',
     title: 'M4',
+    desiredValue: 0,
+    weightingFactor: 7,
     criteria: [
       {
         title: 'Основи психології пілотів',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       },
       {
         title: 'Основи педагогіки',
-        desiredValue: 0,
+        desiredValue: 90,
         answers: []
       },
       {
         title: 'Етикет, імідж, бізнес та протокол',
-        desiredValue: 0,
+        desiredValue: 90,
         answers: []
       },
       {
         title: 'Робота в колективі',
-        desiredValue: 0,
+        desiredValue: 95,
         answers: []
       }
     ]

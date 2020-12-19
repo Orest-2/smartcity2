@@ -14,5 +14,7 @@ export interface Model {
   title: string;
   type: ModelTypes;
   active: boolean;
+  desiredValue: number;
+  weightingFactor: number;
   criteria: Criterion[];
 }

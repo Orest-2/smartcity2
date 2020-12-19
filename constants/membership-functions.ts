@@ -8,3 +8,22 @@ export const harmonicSpline = (s: number, a: number, b:number): number => {
 
   return 0.5 + (0.5 * Math.cos((f / fs) * Math.PI))
 }
+
+export const squareSpline = (t: number, a: number, b:number): number => {
+  if (t <= a) { return 0 }
+
+  if (t >= b) { return 1 }
+
+  const ab2 = (a + b) / 2
+  const s = b - a
+
+  if (a < t && t <= ab2) {
+    const f = t - a
+
+    return 2 * Math.pow(f / s, 2)
+  }
+
+  const f = b - t
+
+  return 1 - 2 * Math.pow(f / s, 2)
+}

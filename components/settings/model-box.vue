@@ -56,9 +56,27 @@
 
     <v-expansion-panel-content>
       <v-col>
-        <div>
+        <div class="mb-2">
           <span>Type:</span> {{ model.type }}
         </div>
+        <v-row>
+          <v-col v-if="model.type === 'tests'">
+            <v-select
+              v-model.number="desiredValue"
+              label="Desired value"
+              :items="desiredValueOptions"
+              hide-details="auto"
+            />
+          </v-col>
+          <v-col>
+            <v-text-field
+              v-model.number="weightingFactor"
+              type="number"
+              label="Weighting factor"
+              hide-details="auto"
+            />
+          </v-col>
+        </v-row>
       </v-col>
       <criteria
         :model="model"
@@ -74,6 +92,8 @@ import { mapActions } from 'vuex'
 
 import criteria from './criteria.vue'
 
+import { desiredValueOptions } from '~/constants/settings'
+
 import { Model } from '~/types/settings'
 
 export default Vue.extend({
@@ -84,6 +104,12 @@ export default Vue.extend({
       type: Object as PropType<Model>,
       required: true,
       default: {} as Model
+    }
+  },
+
+  data () {
+    return {
+      desiredValueOptions
     }
   },
 
@@ -107,6 +133,24 @@ export default Vue.extend({
       },
       set (val: string) {
         this.updateModel({ index: this.index, key: 'title', value: val })
+      }
+    },
+
+    desiredValue: {
+      get (): number {
+        return this.model.desiredValue
+      },
+      set (val: number) {
+        this.updateModel({ index: this.index, key: 'desiredValue', value: val })
+      }
+    },
+
+    weightingFactor: {
+      get (): number {
+        return this.model.weightingFactor
+      },
+      set (val: number) {
+        this.updateModel({ index: this.index, key: 'weightingFactor', value: Number(val) })
       }
     }
   },

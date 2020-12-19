@@ -7,7 +7,10 @@ export interface CriterionData {
 
 export interface ModelData {
   data: CriterionData[]
+  modelDesiredValue: number
   readonly a: number
   readonly b: number
   readonly specialistScoreSum: number[]
+  readonly criteriaDesiredValueSum: number
+  readonly w: number
 }

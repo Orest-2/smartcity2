@@ -57,6 +57,7 @@ export const actions: ActionTree<HomeState, RootState> = {
         }
 
         return {
+          modelDesiredValue: el.desiredValue,
           data: el.criteria.map<CriterionData>(
             (el, j) => {
               return {
@@ -90,6 +91,14 @@ export const actions: ActionTree<HomeState, RootState> = {
             }, initRes)
 
             return resSum
+          },
+          get criteriaDesiredValueSum () {
+            const sum = this.data.reduce((r, e) => r + e.desiredValue, 0)
+            return sum
+          },
+          get w () {
+            const s = models.reduce((a, b) => a + b.weightingFactor, 0)
+            return el.weightingFactor / s
           }
         }
       }
