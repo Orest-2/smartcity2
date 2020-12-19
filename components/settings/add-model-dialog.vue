@@ -118,6 +118,8 @@ export default Vue.extend({
         title: this.form.title,
         type: this.form.type as ModelTypes,
         active: true,
+        desiredValue: 0,
+        weightingFactor: 0,
         criteria: []
       }
       const payload = { model }
