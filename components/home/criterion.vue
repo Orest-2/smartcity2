@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="12">
-      {{ criterion.title }}
+      {{ criterionIndex+1 }}. {{ criterion.title }}
     </v-col>
 
     <v-col cols="12">

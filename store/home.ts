@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import { homeDataMock } from '~/mocks/home'
 import { CriterionData, ModelData } from '~/types/home'
 import { Model } from '~/types/settings'
 import { RootState } from '~/types/store'
@@ -32,25 +33,64 @@ export const mutations: MutationTree<HomeState> = {
 }
 
 export const actions: ActionTree<HomeState, RootState> = {
+  mockData ({ commit, dispatch }) {
+    commit('SET_SPECIALIST_N', 7)
+    dispatch('initData', { mock: true })
+  },
+
   setSpecialistN ({ commit, dispatch }, { n }) {
     commit('SET_SPECIALIST_N', n)
     dispatch('initData')
   },
 
-  initData ({ rootGetters, state, commit }) {
+  initData ({ rootGetters, state, commit }, { mock } = {}) {
     const models: Model[] = rootGetters['settings/getActiveModels']
 
     const res = models.map<ModelData>(
-      (el) => {
+      (el, i) => {
+        const getSumOf = (func: (...values: number[]) => number) => {
+          const scores = el.criteria.map(c => c.answers.map(a => a.score))
+          return scores.reduce((a, s) => {
+            a += func(...s)
+            return a
+          }, 0)
+        }
+
         return {
           data: el.criteria.map<CriterionData>(
-            el => (
-              {
+            (el, j) => {
+              return {
                 desiredValue: el.desiredValue,
-                data: Array(state.specialistN).fill(0)
+                data: mock ? homeDataMock[i].data[j].data : Array(state.specialistN).fill(0),
+                get min () {
+                  return Math.min(...this.data)
+                },
+                get max () {
+                  return Math.max(...this.data)
+                }
               }
-            )
-          )
+            }
+          ),
+          get a () {
+            if (el.type === 'tests') { return getSumOf(Math.min) }
+
+            return Math.min(...this.data.map(d => d.min)) * el.criteria.length
+          },
+          get b () {
+            if (el.type === 'tests') { return getSumOf(Math.max) }
+
+            return Math.max(...this.data.map(d => d.max)) * el.criteria.length
+          },
+          get specialistScoreSum () {
+            const initRes = Array<number>(state.specialistN).fill(0)
+
+            const resSum = this.data.reduce((sum, c) => {
+              const d = sum.map((n, i) => n + c.data[i])
+              return d
+            }, initRes)
+
+            return resSum
+          }
         }
       }
     )

@@ -5,14 +5,14 @@
   >
     <v-select
       v-if="model.type === 'tests'"
-      v-model="specialistData"
+      v-model.number="specialistData"
       :items="toOptionArray(criterion.answers)"
       :label=" `e${specialistIndex+1} Answer`"
       hide-details="auto"
     />
     <v-text-field
       v-if="model.type === 'values'"
-      v-model="specialistData"
+      v-model.number="specialistData"
       type="number"
       :label=" `e${specialistIndex+1} Score`"
       hide-details="auto"
@@ -71,7 +71,7 @@ export default Vue.extend({
           modelIndex: this.modelIndex,
           criterionIndex: this.criterionIndex,
           specialistIndex: this.specialistIndex,
-          value: val
+          value: Number(val)
         })
       }
     }
