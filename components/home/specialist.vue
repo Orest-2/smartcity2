@@ -14,7 +14,7 @@
       v-if="model.type === 'values'"
       v-model="specialistData"
       type="number"
-      :label=" `e${specialistIndex+1} Answer`"
+      :label=" `e${specialistIndex+1} Score`"
       hide-details="auto"
     />
   </v-col>

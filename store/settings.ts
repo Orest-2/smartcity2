@@ -30,6 +30,17 @@ const tests: Model[] = [
           { score: 20, title: 'Зрозуміти, яку користь цей проект може принести для нашої групи (20 балів)' },
           { score: 30, title: 'Щоб робота над проектом була організована і зрушила з місця (30 балів)' }
         ]
+      },
+      {
+        title: 'Говорячи в цілому, я засвоюю нові ідеї найкраще, коли можу:',
+        desiredValue: 0,
+        answers: [
+          { score: 5, title: 'Повязати їх з поточними чи майбутніми заняттями (5 балів)' },
+          { score: 10, title: 'Застосувати їх до конкретних ситуацій (10 балів)' },
+          { score: 15, title: 'Зосередитися на них і ретельно їх проаналізувати (15 балів)' },
+          { score: 20, title: 'Зрозуміти, наскільки вони подібні до звичних ідей (20 балів)' },
+          { score: 30, title: 'Протиставити їх іншим ідеям (30 балів)' }
+        ]
       }
     ]
   },
@@ -37,19 +48,82 @@ const tests: Model[] = [
     active: true,
     type: 'values',
     title: 'M2',
-    criteria: []
+    criteria: [
+      {
+        title: 'Авіаційна метеорологія',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Аеродинаміка та польотна механіка',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Маса та рівновага літальних апаратів',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Повітряний зв’язок',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Авіаційна техніка',
+        desiredValue: 0,
+        answers: []
+      }
+    ]
   },
   {
     active: true,
     type: 'values',
     title: 'M3',
-    criteria: []
+    criteria: [
+      {
+        title: 'Практичне навчання з радіолокаційного контролю',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Навчання на пілотному симуляторі',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Навчання основам польотів',
+        desiredValue: 0,
+        answers: []
+      }
+    ]
   },
   {
     active: true,
     type: 'values',
     title: 'M4',
-    criteria: []
+    criteria: [
+      {
+        title: 'Основи психології пілотів',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Основи педагогіки',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Етикет, імідж, бізнес та протокол',
+        desiredValue: 0,
+        answers: []
+      },
+      {
+        title: 'Робота в колективі',
+        desiredValue: 0,
+        answers: []
+      }
+    ]
   }
 ]
 
