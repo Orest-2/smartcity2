@@ -17,7 +17,7 @@
           v-for="(c, ci) in model.criteria"
           :key="ci"
           :model-index="modelIndex"
-          :criterion="c"
+          :criterion="Object.freeze(c)"
         />
       </v-col>
     </v-row>

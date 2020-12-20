@@ -6,7 +6,8 @@ import { Model } from '~/types/settings'
 import { RootState } from '~/types/store'
 
 export const state = () => ({
-  specialistN: 6,
+  specialistN: 0,
+  evaluationModel: 'M1' as 'M1' | 'M2' | 'M3',
   data: [] as ModelData[]
 })
 
@@ -23,7 +24,11 @@ export const mutations: MutationTree<HomeState> = {
     state.specialistN = n
   },
 
-  INIT_DATA (s, data) {
+  SET_EVALUATION_MODEL (state, n) {
+    state.evaluationModel = n
+  },
+
+  INIT_DATA (s, data: ModelData[]) {
     s.data = data
   },
 
@@ -41,6 +46,10 @@ export const actions: ActionTree<HomeState, RootState> = {
   setSpecialistN ({ commit, dispatch }, { n }) {
     commit('SET_SPECIALIST_N', n)
     dispatch('initData')
+  },
+
+  setEvaluationModel ({ commit }, { n }) {
+    commit('SET_EVALUATION_MODEL', n)
   },
 
   initData ({ rootGetters, state, commit }, { mock } = {}) {

@@ -3,20 +3,23 @@
     cols="12"
     md="2"
   >
-    <v-select
-      v-if="model.type === 'tests'"
-      v-model.number="specialistData"
-      :items="toOptionArray(criterion.answers)"
-      :label=" `e${specialistIndex+1} Answer`"
-      hide-details="auto"
-    />
-    <v-text-field
-      v-if="model.type === 'values'"
-      v-model.number="specialistData"
-      type="number"
-      :label=" `e${specialistIndex+1} Score`"
-      hide-details="auto"
-    />
+    <v-lazy>
+      <v-select
+        v-if="model.type === 'tests'"
+        v-model.number="specialistData"
+        :items="toOptionArray(criterion.answers)"
+        :label=" `e${specialistIndex+1} Answer`"
+        hide-details="auto"
+      />
+
+      <v-text-field
+        v-if="model.type === 'values'"
+        v-model.number="specialistData"
+        type="number"
+        :label=" `e${specialistIndex+1} Score`"
+        hide-details="auto"
+      />
+    </v-lazy>
   </v-col>
 </template>
 
@@ -51,11 +54,11 @@ export default Vue.extend({
     },
 
     model (): Model {
-      return this.getModel(this.modelIndex)
+      return Object.freeze(this.getModel(this.modelIndex))
     },
 
     criterion ():Criterion {
-      return this.model.criteria[this.criterionIndex]
+      return Object.freeze(this.model.criteria[this.criterionIndex])
     },
 
     specialistData: {

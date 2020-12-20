@@ -5,14 +5,16 @@
     </v-col>
 
     <v-col cols="12">
-      <v-row>
-        <specialist
-          v-for="(sn, si) in specialistN"
-          :key="si"
-          :model-index="modelIndex"
-          :criterion-index="criterionIndex"
-        />
-      </v-row>
+      <v-lazy>
+        <v-row>
+          <specialist
+            v-for="(sn, si) in specialistN"
+            :key="si"
+            :model-index="modelIndex"
+            :criterion-index="criterionIndex"
+          />
+        </v-row>
+      </v-lazy>
     </v-col>
   </v-row>
 </template>
