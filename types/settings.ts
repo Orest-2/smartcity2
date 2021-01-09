@@ -18,3 +18,14 @@ export interface Model {
   weightingFactor: number;
   criteria: Criterion[];
 }
+
+export interface LinguisticVariable {
+  title: string;
+  k: number;
+}
+
+export interface Algorithm {
+  M2: {
+    linguisticVariables: LinguisticVariable[]
+  }
+}

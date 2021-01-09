@@ -9,8 +9,26 @@
           <div class="text-center elevation-1 my-2 pa-2">
             <span class="headline">Incoming data</span>
 
-            <v-row>
-              <v-col>
+            <v-row
+              class="flex-column"
+              align-content="center"
+              justify="center"
+            >
+              <v-col
+                cols="12"
+                md="4"
+              >
+                <v-select
+                  v-model="em"
+                  :items="evaluationModels"
+                  label="Select evaluation model"
+                  hide-details="auto"
+                />
+              </v-col>
+              <v-col
+                cols="12"
+                md="4"
+              >
                 <v-text-field
                   v-model.number="sn"
                   label="The number of specialists"
@@ -51,13 +69,16 @@ import Vue from 'vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 import { RootState } from '~/types/store'
+import { evaluationModels } from '~/constants/home'
+
 import Actions from '~/components/home/actions.vue'
 import model from '~/components/home/model.vue'
 import Result from '~/components/home/result.vue'
 
 const state = {
   specialistN: (s: RootState) => s.home.specialistN,
-  data: (s: RootState) => s.home.data
+  data: (s: RootState) => s.home.data,
+  evaluationModel: (s: RootState) => s.home.evaluationModel
 }
 
 export type State = typeof state
@@ -67,7 +88,8 @@ export default Vue.extend({
 
   data () {
     return {
-      showResult: false
+      showResult: false,
+      evaluationModels
     }
   },
 
@@ -77,6 +99,15 @@ export default Vue.extend({
     ...mapGetters({
       models: 'settings/getActiveModels'
     }),
+
+    em: {
+      get (): string {
+        return this.evaluationModel
+      },
+      set (val: string) {
+        this.setEvaluationModel({ n: val })
+      }
+    },
 
     sn: {
       get (): number {
@@ -92,12 +123,16 @@ export default Vue.extend({
     if (this.data.length === 0) {
       this.initData()
     }
+    if (this.em === 'M2') {
+      this.em = 'M1'
+    }
   },
 
   methods: {
     ...mapActions({
       setSpecialistN: 'home/setSpecialistN',
-      initData: 'home/initData'
+      initData: 'home/initData',
+      setEvaluationModel: 'home/setEvaluationModel'
     })
   },
 

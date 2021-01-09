@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { homeDataMock } from '~/mocks/home'
-import { CriterionData, ModelData } from '~/types/home'
+import { CriterionData, DataM2, ModelData } from '~/types/home'
 import { Model } from '~/types/settings'
 import { RootState } from '~/types/store'
 
 export const state = () => ({
   specialistN: 0,
   evaluationModel: 'M1' as 'M1' | 'M2' | 'M3',
-  data: [] as ModelData[]
+  data: [] as ModelData[],
+  dataM2: [] as DataM2[]
 })
 
 export type HomeState = ReturnType<typeof state>
@@ -32,8 +33,16 @@ export const mutations: MutationTree<HomeState> = {
     s.data = data
   },
 
+  INIT_DATA_M2 (s, data: DataM2[]) {
+    s.dataM2 = data
+  },
+
   SET_DATA (s, { mi, ci, si, v }) {
     Vue.set(s.data[mi].data[ci].data, si, v)
+  },
+
+  SET_DATA_M2 (s, { si, v }) {
+    Vue.set(s.dataM2, si, v)
   }
 }
 
@@ -113,13 +122,23 @@ export const actions: ActionTree<HomeState, RootState> = {
       }
     )
 
+    const res2 = Array<DataM2>(state.specialistN).fill({ k: 1, m1Value: 0, specialistIndex: 0, specialistName: '' })
+
     commit('INIT_DATA', res)
+    commit('INIT_DATA_M2', res2)
   },
 
   setData ({ commit }, { modelIndex, criterionIndex, specialistIndex, value }) {
     commit('SET_DATA', {
       mi: modelIndex,
       ci: criterionIndex,
+      si: specialistIndex,
+      v: value
+    })
+  },
+
+  setDataM2 ({ commit }, { specialistIndex, value }) {
+    commit('SET_DATA_M2', {
       si: specialistIndex,
       v: value
     })

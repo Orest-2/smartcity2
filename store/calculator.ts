@@ -1,6 +1,7 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { harmonicSpline, squareSpline } from '~/constants/membership-functions'
 import { Result } from '~/types/calculator'
+import { DataM2 } from '~/types/home'
 import { RootState } from '~/types/store'
 
 export const state = () => ({
@@ -30,26 +31,17 @@ export const mutations: MutationTree<CalculatorState> = {
 }
 
 export const actions: ActionTree<CalculatorState, RootState> = {
-  calculate ({ rootState, commit }) {
-    const inData = rootState.home.data
+  calculate ({ state, rootState, commit }) {
     const evaluationModel = rootState.home.evaluationModel
     const sn = rootState.home.specialistN
 
     const res: Result = {
-      fuzzyModel: {
-        intermediateResults: [],
-        result: []
-      },
-      hybridFuzzyModel: {
-        result: []
-      },
-      neuroFuzzyNetwork: {
-        intermediateResults: [],
-        result: []
-      }
+      ...JSON.parse(JSON.stringify(state.result))
     }
 
-    if (evaluationModel === 'M1' || evaluationModel === 'M2') {
+    if (evaluationModel === 'M1') {
+      const inData = rootState.home.data
+
       const intermediateFuzzyModelRes = inData.map((data) => {
         const { a, b, criteriaDesiredValueSum, modelDesiredValue, w } = data
 
@@ -84,9 +76,25 @@ export const actions: ActionTree<CalculatorState, RootState> = {
       res.fuzzyModel.result = fuzzyModelRes
     }
 
-    // if (evaluationModel === 'M2') {
+    if (evaluationModel === 'M2') {
+      const inDataM2 = rootState.home.dataM2
 
-    // }
+      const calcFunc = (el: DataM2) => {
+        const P = el.m1Value * 100
+
+        if (P < 0) {
+          return 0
+        }
+
+        if (P > 100) {
+          return 1
+        }
+
+        return Math.pow(el.m1Value, el.k)
+      }
+
+      res.hybridFuzzyModel.result = inDataM2.map(el => calcFunc(el))
+    }
 
     commit('SET_RESULT', res)
 

@@ -14,3 +14,10 @@ export interface ModelData {
   readonly criteriaDesiredValueSum: number
   readonly w: number
 }
+
+export interface DataM2 {
+  specialistIndex: number,
+  specialistName: string,
+  m1Value: number,
+  k: number;
+}

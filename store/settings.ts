@@ -1,12 +1,30 @@
 import Vue from 'vue'
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { RootState } from '~/types/store'
-import { Answer, Criterion, Model } from '~/types/settings'
+import { Algorithm, Answer, Criterion, Model } from '~/types/settings'
 
 import { mock } from '~/mocks/settings'
 
 export const state = () => ({
-  models: [...mock] as Model[]
+  models: [...mock] as Model[],
+  algorithms: {
+    M2: {
+      linguisticVariables: [
+        {
+          title: 'G {The specialist is very well suited to perform the task}',
+          k: 1 / 3
+        },
+        {
+          title: 'H {The specialist suitable for the task}',
+          k: 1
+        },
+        {
+          title: 'S {The specialist is poorly suited to perform the task}',
+          k: 5 / 3
+        }
+      ]
+    }
+  } as Algorithm
 })
 
 export type SettingsState = ReturnType<typeof state>
