@@ -63,7 +63,7 @@
           <v-col v-if="model.type === 'tests'">
             <v-select
               v-model.number="desiredValue"
-              label="Desired value"
+              label="Fuzzy model desired value"
               :items="desiredValueOptions"
               hide-details="auto"
             />
