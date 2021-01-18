@@ -63,10 +63,11 @@
           <v-tab-item>
             <v-toolbar
               flat
-              class="mb-4"
             >
               <v-toolbar-title>Algorithm Settings</v-toolbar-title>
             </v-toolbar>
+
+            <algorithm />
           </v-tab-item>
         </v-tabs-items>
       </v-card>
@@ -81,6 +82,7 @@ import { RootState } from '~/types/store'
 
 import ModelBox from '~/components/settings/model-box.vue'
 import AddModelDialog from '~/components/settings/add-model-dialog.vue'
+import Algorithm from '~/components/settings/algorithm.vue'
 
 const state = {
   models: (s: RootState) => s.settings.models
@@ -91,7 +93,8 @@ export type State = typeof state
 export default Vue.extend({
   components: {
     ModelBox,
-    AddModelDialog
+    AddModelDialog,
+    Algorithm
   },
 
   data () {

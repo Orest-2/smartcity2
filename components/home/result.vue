@@ -253,7 +253,7 @@ export default Vue.extend({
             specialistIndex: el.i,
             specialistName: el.text,
             m1Value: el.value,
-            k: 1
+            k: this.linguisticVariables[Math.floor(this.linguisticVariables.length / 2)].k
           } as DataM2
         })
       })

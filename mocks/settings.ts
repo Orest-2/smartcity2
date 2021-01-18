@@ -1,4 +1,4 @@
-import { Model } from '~/types/settings'
+import { Algorithm, Model } from '~/types/settings'
 
 export const mock: Model[] = [
   {
@@ -186,3 +186,25 @@ export const mock: Model[] = [
     ]
   }
 ]
+
+export const algorithms: Algorithm = {
+  M2: {
+    linguisticVariables: [
+      {
+        title: 'G {The specialist is very well suited to perform the task}',
+        k: 1 / 3
+      },
+      {
+        title: 'H {The specialist suitable for the task}',
+        k: 1
+      },
+      {
+        title: 'S {The specialist is poorly suited to perform the task}',
+        k: 5 / 3
+      }
+    ]
+  },
+  M3: {
+    test: []
+  }
+}

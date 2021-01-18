@@ -3,28 +3,11 @@ import { GetterTree, ActionTree, MutationTree } from 'vuex'
 import { RootState } from '~/types/store'
 import { Algorithm, Answer, Criterion, Model } from '~/types/settings'
 
-import { mock } from '~/mocks/settings'
+import { algorithms, mock } from '~/mocks/settings'
 
 export const state = () => ({
   models: [...mock] as Model[],
-  algorithms: {
-    M2: {
-      linguisticVariables: [
-        {
-          title: 'G {The specialist is very well suited to perform the task}',
-          k: 1 / 3
-        },
-        {
-          title: 'H {The specialist suitable for the task}',
-          k: 1
-        },
-        {
-          title: 'S {The specialist is poorly suited to perform the task}',
-          k: 5 / 3
-        }
-      ]
-    }
-  } as Algorithm
+  algorithms: { ...algorithms } as Algorithm
 })
 
 export type SettingsState = ReturnType<typeof state>
@@ -89,7 +72,36 @@ export const mutations: MutationTree<SettingsState> = {
 
   REMOVE_ANSWER (state, { mi, ci, ai }) {
     state.models[mi].criteria[ci].answers.splice(ai, 1)
+  },
+
+  UPDATE_ALGORITHM (state, { a, s, i, k, v }) {
+    const ak = a as 'M2' | 'M3'
+
+    if (ak === 'M2') {
+      type Sk = keyof Algorithm['M2']
+      const sk = s as Sk
+
+      Vue.set(state.algorithms[ak][sk], i,
+        {
+          ...state.algorithms[ak][sk][i],
+          [k]: v
+        }
+      )
+    }
+
+    if (ak === 'M3') {
+      type Sk = keyof Algorithm['M3']
+      const sk = s as Sk
+
+      Vue.set(state.algorithms[ak][sk], i,
+        {
+          ...state.algorithms[ak][sk][i] as {},
+          [k]: v
+        }
+      )
+    }
   }
+
 }
 
 export const actions: ActionTree<SettingsState, RootState> = {
@@ -163,6 +175,16 @@ export const actions: ActionTree<SettingsState, RootState> = {
       mi: modelIndex,
       ci: criterionIndex,
       ai: answerIndex
+    })
+  },
+
+  updateAlgorithm ({ commit }, { algorithm, set, index, key, value }) {
+    commit('UPDATE_ALGORITHM', {
+      a: algorithm,
+      s: set,
+      i: index,
+      k: key,
+      v: value
     })
   }
 }

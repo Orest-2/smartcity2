@@ -27,5 +27,8 @@ export interface LinguisticVariable {
 export interface Algorithm {
   M2: {
     linguisticVariables: LinguisticVariable[]
+  },
+  M3: {
+    test: unknown[]
   }
 }
