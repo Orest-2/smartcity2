@@ -13,7 +13,7 @@
           <v-col
             cols="12"
             md="7"
-            class="pb-0"
+            class="pb-1"
           >
             <v-text-field
               v-model="title"
@@ -21,12 +21,22 @@
               hide-details="auto"
             />
           </v-col>
-          <v-col class="pb-0">
+          <v-col
+            v-if="modelType === 'values'"
+            class="pb-1"
+          >
             <v-text-field
-              v-if="modelType === 'values'"
-              v-model="desiredValue"
+              v-model.number="desiredValue"
               type="number"
               label="Desired value"
+              hide-details="auto"
+            />
+          </v-col>
+          <v-col class="pb-1">
+            <v-text-field
+              v-model.number="synapticWeight"
+              type="number"
+              label="Neuro-fuzzy model synaptic weight"
               hide-details="auto"
             />
           </v-col>
@@ -34,7 +44,7 @@
             cols="12"
             md="1"
             align-self="center"
-            class="pb-0"
+            class="pb-1"
           >
             <v-row
               justify="end"
@@ -131,7 +141,21 @@ export default Vue.extend({
           modelIndex: this.modelIndex,
           criterionIndex: this.index,
           key: 'desiredValue',
-          value: val
+          value: Number(val)
+        })
+      }
+    },
+
+    synapticWeight: {
+      get (): number {
+        return this.criterion.synapticWeight
+      },
+      set (val: number) {
+        this.updateCriterion({
+          modelIndex: this.modelIndex,
+          criterionIndex: this.index,
+          key: 'synapticWeight',
+          value: Number(val)
         })
       }
     }

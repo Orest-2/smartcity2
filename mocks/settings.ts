@@ -11,6 +11,7 @@ export const mock: Model[] = [
       {
         title: 'Коли між людьми відбувається конфлікт на ґрунті ідей, я віддаю перевагу тій стороні, що:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 5, title: 'Приймає, визнає конфлікт і намагається висловити його відкрито (5 балів)' },
           { score: 10, title: 'Більше за інших зачіпає мої власні цінності та ідеали (10 балів)' },
@@ -22,6 +23,7 @@ export const mock: Model[] = [
       {
         title: 'Коли я починаю працювати над проектом у складі групи, найважливіше для мене:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 5, title: 'Зрозуміти мету і значення цього проекту (5 балів)' },
           { score: 10, title: 'Розкрити мету і цінності учасників робочої групи (10 балів)' },
@@ -33,6 +35,7 @@ export const mock: Model[] = [
       {
         title: 'Говорячи в цілому, я засвоюю нові ідеї найкраще, коли можу:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 5, title: 'Повязати їх з поточними чи майбутніми заняттями (5 балів)' },
           { score: 10, title: 'Застосувати їх до конкретних ситуацій (10 балів)' },
@@ -44,6 +47,7 @@ export const mock: Model[] = [
       {
         title: 'Імовірно, я буду вважати щось правильним, істинним, якщо це «щось»:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 5, title: 'Вистояло проти опозиції, витримало опір протилежних підходів (5 балів)' },
           { score: 10, title: 'Узгоджується з іншими речами, яким я вірю (10 балів)' },
@@ -55,6 +59,7 @@ export const mock: Model[] = [
       {
         title: 'Коли я читаю звіт про роботу, я звертаю найбільше уваги на:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 10, title: 'Близькість висновків до мого особистого досвіду (10 балів)' },
           { score: 15, title: 'Можливість виконання даних рекомендацій (15 балів)' },
@@ -66,6 +71,7 @@ export const mock: Model[] = [
       {
         title: 'Коли переді мною поставлено завдання, перше, про що я хочу довідатися - це:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 10, title: 'Який найкращий метод для вирішення даного завдання (10 балів)' },
           { score: 12, title: 'Кому і коли потрібно, щоб це завдання було вирішене (12 балів)' },
@@ -77,6 +83,7 @@ export const mock: Model[] = [
       {
         title: 'Якби мені довелося проходити якесь випробування чи складати іспит, я волів би мати:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 10, title: 'Набір обєктивних, проблемно-орієнтованих питань з предмета (10 балів)' },
           { score: 12, title: 'Дискусію з тими, хто також проходить іспит (12 балів)' },
@@ -88,6 +95,7 @@ export const mock: Model[] = [
       {
         title: 'Коли я вперше підходжу до якоїсь технічної проблеми, я швидше за все, буду:',
         desiredValue: 0,
+        synapticWeight: 0,
         answers: [
           { score: 5, title: 'Намагатись повязати її з більш загальною проблемою чи теорією (5 балів)' },
           { score: 10, title: 'Шукати шляхів і способів вирішення цієї проблеми (10 балів)' },
@@ -108,26 +116,31 @@ export const mock: Model[] = [
       {
         title: 'Авіаційна метеорологія',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Аеродинаміка та польотна механіка',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Маса та рівновага літальних апаратів',
         desiredValue: 92,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Повітряний зв’язок',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Авіаційна техніка',
         desiredValue: 97,
+        synapticWeight: 0,
         answers: []
       }
     ]
@@ -142,16 +155,19 @@ export const mock: Model[] = [
       {
         title: 'Практичне навчання з радіолокаційного контролю',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Навчання на пілотному симуляторі',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Навчання основам польотів',
         desiredValue: 93,
+        synapticWeight: 0,
         answers: []
       }
     ]
@@ -166,21 +182,25 @@ export const mock: Model[] = [
       {
         title: 'Основи психології пілотів',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Основи педагогіки',
         desiredValue: 90,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Етикет, імідж, бізнес та протокол',
         desiredValue: 90,
+        synapticWeight: 0,
         answers: []
       },
       {
         title: 'Робота в колективі',
         desiredValue: 95,
+        synapticWeight: 0,
         answers: []
       }
     ]
@@ -205,6 +225,27 @@ export const algorithms: Algorithm = {
     ]
   },
   M3: {
-    test: []
+    linguisticVariables: [
+      {
+        title: 'H - "low level"',
+        a1: 0,
+        a2: 2
+      },
+      {
+        title: 'HC - "below average"',
+        a1: 2,
+        a2: 5
+      },
+      {
+        title: 'C - "average level of the indicator"',
+        a1: 5,
+        a2: 8
+      },
+      {
+        title: 'B - "high level of the indicator"',
+        a1: 8,
+        a2: 10
+      }
+    ]
   }
 }

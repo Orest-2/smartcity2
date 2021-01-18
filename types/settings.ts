@@ -6,6 +6,7 @@ export interface Answer {
 export interface Criterion {
   title: string;
   desiredValue: number;
+  synapticWeight: number;
   answers: Answer[];
 }
 
@@ -19,16 +20,22 @@ export interface Model {
   criteria: Criterion[];
 }
 
-export interface LinguisticVariable {
+export interface LinguisticVariableM2 {
   title: string;
   k: number;
 }
 
+export interface LinguisticVariableM3 {
+  title: string;
+  a1: number;
+  a2: number;
+}
+
 export interface Algorithm {
   M2: {
-    linguisticVariables: LinguisticVariable[]
+    linguisticVariables: LinguisticVariableM2[]
   },
   M3: {
-    test: unknown[]
+    linguisticVariables: LinguisticVariableM3[]
   }
 }

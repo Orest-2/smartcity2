@@ -27,14 +27,14 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue'
 import { mapActions } from 'vuex'
-import { LinguisticVariable } from '~/types/settings'
+import { LinguisticVariableM2 } from '~/types/settings'
 
 export default Vue.extend({
   props: {
     data: {
-      type: Object as PropType<LinguisticVariable>,
+      type: Object as PropType<LinguisticVariableM2>,
       required: true,
-      default: {} as LinguisticVariable
+      default: {} as LinguisticVariableM2
     }
   },
 

@@ -72,7 +72,7 @@
             <v-text-field
               v-model.number="weightingFactor"
               type="number"
-              label="Weighting factor"
+              label="Fuzzy model weighting factor"
               hide-details="auto"
             />
           </v-col>
