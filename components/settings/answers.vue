@@ -4,32 +4,34 @@
       <span class="subtitle-2">Answers</span>
     </v-card-title>
     <v-card-text>
-      <v-container class="py-0">
-        <answers-item
-          v-for="(answer, i) in answers"
-          :key="i"
-          :answer="answer"
-          :criterion-index="criterionIndex"
-          :model-index="modelIndex"
-        />
+      <v-lazy>
+        <v-container class="py-0">
+          <answers-item
+            v-for="(answer, i) in answers"
+            :key="i"
+            :answer="answer"
+            :criterion-index="criterionIndex"
+            :model-index="modelIndex"
+          />
 
-        <v-divider class="my-2" />
+          <v-divider class="my-2" />
 
-        <v-btn
-          color="second"
-          block
-          text
-          @click="add"
-        >
-          <v-icon
-            left
-            dark
+          <v-btn
+            color="second"
+            block
+            text
+            @click="add"
           >
-            mdi-plus
-          </v-icon>
-          Add one more answer
-        </v-btn>
-      </v-container>
+            <v-icon
+              left
+              dark
+            >
+              mdi-plus
+            </v-icon>
+            Add one more answer
+          </v-btn>
+        </v-container>
+      </v-lazy>
     </v-card-text>
   </v-card>
 </template>
