@@ -1,8 +1,6 @@
 <template>
   <div>
-    <v-row>
-      <v-divider />
-    </v-row>
+    <v-divider class="my-2" />
 
     <v-hover>
       <template #default="{ hover }">
@@ -11,7 +9,6 @@
             'elevation-1': hover,
             'accent': hover,
           }"
-          class="my-1"
         >
           <v-col
             cols="12"

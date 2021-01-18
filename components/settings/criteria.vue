@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title class="pb-1">
+    <v-card-title>
       <span class="subtitle-1">Criteria</span>
     </v-card-title>
     <v-card-text>
@@ -13,25 +13,21 @@
           :model-type="type"
         />
 
-        <v-row>
-          <v-divider />
-        </v-row>
+        <v-divider class="my-4" />
 
-        <v-row class="mt-2">
-          <v-btn
-            color="second"
-            block
-            @click="add"
+        <v-btn
+          color="second"
+          block
+          @click="add"
+        >
+          <v-icon
+            left
+            dark
           >
-            <v-icon
-              left
-              dark
-            >
-              mdi-plus
-            </v-icon>
-            Add one more criterion
-          </v-btn>
-        </v-row>
+            mdi-plus
+          </v-icon>
+          Add one more criterion
+        </v-btn>
       </v-container>
     </v-card-text>
   </v-card>

@@ -1,6 +1,6 @@
 <template>
   <v-card class="elevation-0">
-    <v-card-title class="pb-1 pt-1">
+    <v-card-title>
       <span class="subtitle-2">Answers</span>
     </v-card-title>
     <v-card-text>
@@ -13,26 +13,22 @@
           :model-index="modelIndex"
         />
 
-        <v-row>
-          <v-divider class="my-1" />
-        </v-row>
+        <v-divider class="my-2" />
 
-        <v-row class="mt-2">
-          <v-btn
-            color="second"
-            block
-            text
-            @click="add"
+        <v-btn
+          color="second"
+          block
+          text
+          @click="add"
+        >
+          <v-icon
+            left
+            dark
           >
-            <v-icon
-              left
-              dark
-            >
-              mdi-plus
-            </v-icon>
-            Add one more answer
-          </v-btn>
-        </v-row>
+            mdi-plus
+          </v-icon>
+          Add one more answer
+        </v-btn>
       </v-container>
     </v-card-text>
   </v-card>

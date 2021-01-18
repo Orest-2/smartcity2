@@ -1,8 +1,6 @@
 <template>
   <div>
-    <v-row>
-      <v-divider class="my-1" />
-    </v-row>
+    <v-divider class="my-2" />
 
     <v-row class="my-1">
       <v-col
