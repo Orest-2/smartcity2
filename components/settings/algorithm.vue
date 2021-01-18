@@ -1,7 +1,9 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="subtitle-1">Linguistic variables for evaluating specialists</span>
+      <span class="subtitle-1">
+        Linguistic variables of a fuzzy hybrid model for assessing specialists
+      </span>
     </v-card-title>
 
     <alg-m-2-lves-item
