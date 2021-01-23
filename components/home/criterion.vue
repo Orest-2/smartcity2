@@ -1,12 +1,15 @@
 <template>
-  <v-row>
-    <v-col cols="12">
+  <v-row class="ma-0">
+    <v-col
+      cols="12"
+      class="pb-0"
+    >
       {{ criterionIndex+1 }}. {{ criterion.title }}
     </v-col>
 
     <v-col cols="12">
       <v-lazy>
-        <v-row>
+        <v-row class="ma-0 ma-md-n3">
           <specialist
             v-for="(sn, si) in specialistN"
             :key="si"

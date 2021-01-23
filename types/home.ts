@@ -1,6 +1,7 @@
 export interface CriterionData {
   desiredValue: number
   data: number[]
+  l: number[]
   readonly min: number
   readonly max: number
 }

@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mb-2"
+    class="mb-4"
   >
     <v-row>
       <v-col

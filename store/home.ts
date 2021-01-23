@@ -16,7 +16,15 @@ export type HomeState = ReturnType<typeof state>
 
 export const getters: GetterTree<HomeState, RootState> = {
   getSpecialistData (s) {
-    return ({ mi, ci, si }: {mi:number, ci:number, si:number}) => s.data[mi].data[ci].data[si]
+    return (key = 'data', { mi, ci, si }: {mi:number, ci:number, si:number}) => {
+      if (key === 'data') {
+        return s.data[mi].data[ci].data[si]
+      }
+      if (key === 'l') {
+        return s.data[mi].data[ci].l[si]
+      }
+      return 0
+    }
   }
 }
 
@@ -37,8 +45,12 @@ export const mutations: MutationTree<HomeState> = {
     s.dataM2 = data
   },
 
-  SET_DATA (s, { mi, ci, si, v }) {
-    Vue.set(s.data[mi].data[ci].data, si, v)
+  SET_DATA (s, { mi, ci, si, k, v }) {
+    if (k === 'l') {
+      Vue.set(s.data[mi].data[ci].l, si, v)
+    } else {
+      Vue.set(s.data[mi].data[ci].data, si, v)
+    }
   },
 
   SET_DATA_M2 (s, { si, v }) {
@@ -61,7 +73,8 @@ export const actions: ActionTree<HomeState, RootState> = {
     commit('SET_EVALUATION_MODEL', n)
   },
 
-  initData ({ rootGetters, state, commit }, { mock } = {}) {
+  initData ({ rootGetters, state, rootState, commit }, { mock } = {}) {
+    const { linguisticVariables } = rootState.settings.algorithms.M3
     const models: Model[] = rootGetters['settings/getActiveModels']
 
     const res = models.map<ModelData>(
@@ -81,6 +94,7 @@ export const actions: ActionTree<HomeState, RootState> = {
               return {
                 desiredValue: el.desiredValue,
                 data: mock ? homeDataMock[i].data[j].data : Array(state.specialistN).fill(0),
+                l: Array(state.specialistN).fill(linguisticVariables[0]),
                 get min () {
                   return Math.min(...this.data)
                 },
@@ -128,11 +142,12 @@ export const actions: ActionTree<HomeState, RootState> = {
     commit('INIT_DATA_M2', res2)
   },
 
-  setData ({ commit }, { modelIndex, criterionIndex, specialistIndex, value }) {
+  setData ({ commit }, { modelIndex, criterionIndex, specialistIndex, key, value }) {
     commit('SET_DATA', {
       mi: modelIndex,
       ci: criterionIndex,
       si: specialistIndex,
+      k: key,
       v: value
     })
   },

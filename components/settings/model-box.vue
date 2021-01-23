@@ -8,7 +8,7 @@
         <v-col
           cols="6"
           md="3"
-          class="pa-0"
+          class="px-0"
           @click.stop
         >
           <v-text-field
@@ -68,11 +68,19 @@
               hide-details="auto"
             />
           </v-col>
-          <v-col>
+          <v-col v-if="model.type !== 'group_criteria'">
             <v-text-field
               v-model.number="weightingFactor"
               type="number"
               label="Fuzzy model weighting factor"
+              hide-details="auto"
+            />
+          </v-col>
+          <v-col v-if="model.type === 'group_criteria'">
+            <v-select
+              v-model.number="synapticWeight"
+              label="Neuro-fuzzy model synaptic weight"
+              :items="synapticWeightsM3"
               hide-details="auto"
             />
           </v-col>
@@ -88,13 +96,20 @@
 
 <script lang="ts">
 import Vue, { PropType } from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 import criteria from './criteria.vue'
 
 import { desiredValueOptions } from '~/constants/settings'
 
 import { Model } from '~/types/settings'
+import { RootState } from '~/types/store'
+
+const state = {
+  synapticWeightsM3: (s: RootState) => s.settings.algorithms.M3.synapticWeights.map(e => ({ text: e.title, value: e.a }))
+}
+
+export type State = typeof state
 
 export default Vue.extend({
   components: { criteria },
@@ -114,6 +129,8 @@ export default Vue.extend({
   },
 
   computed: {
+    ...mapState<RootState, State>(state),
+
     index (): number {
       return this.$vnode.key as number
     },
@@ -152,7 +169,21 @@ export default Vue.extend({
       set (val: number) {
         this.updateModel({ index: this.index, key: 'weightingFactor', value: Number(val) })
       }
+    },
+
+    synapticWeight: {
+      get (): number {
+        return this.model.synapticWeight
+      },
+      set (val: number) {
+        this.updateModel({ index: this.index, key: 'synapticWeight', value: Number(val) })
+      }
     }
+  },
+
+  mounted () {
+    const indx = Math.floor(this.synapticWeightsM3.length / 2)
+    this.synapticWeight = this.synapticWeightsM3[indx].value
   },
 
   methods: {

@@ -17,6 +17,7 @@ export interface Model {
   active: boolean;
   desiredValue: number;
   weightingFactor: number;
+  synapticWeight: number;
   criteria: Criterion[];
 }
 
@@ -31,11 +32,17 @@ export interface LinguisticVariableM3 {
   a2: number;
 }
 
+export interface SynapticWeightM3 {
+  title: string;
+  a: number;
+}
+
 export interface Algorithm {
   M2: {
     linguisticVariables: LinguisticVariableM2[]
   },
   M3: {
     linguisticVariables: LinguisticVariableM3[]
+    synapticWeights: SynapticWeightM3[]
   }
 }

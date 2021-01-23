@@ -21,22 +21,19 @@
               hide-details="auto"
             />
           </v-col>
-          <v-col
-            v-if="modelType === 'values'"
-            class="pb-1"
-          >
+          <v-col class="pb-1">
             <v-text-field
+              v-if="modelType === 'values'"
               v-model.number="desiredValue"
               type="number"
               label="Desired value"
               hide-details="auto"
             />
-          </v-col>
-          <v-col class="pb-1">
             <v-text-field
+              v-if="modelType === 'group_criteria'"
               v-model.number="synapticWeight"
               type="number"
-              label="Neuro-fuzzy model synaptic weight"
+              label="Neuro-fuzzy model criterion synaptic weight"
               hide-details="auto"
             />
           </v-col>

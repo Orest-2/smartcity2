@@ -93,12 +93,16 @@ export default Vue.extend({
     valid: true,
     types: [
       {
-        text: 'Testing model',
+        text: 'Testing model (Fuzzy model only)',
         value: 'tests'
       },
       {
-        text: 'Values model',
+        text: 'Values model (Fuzzy model only)',
         value: 'values'
+      },
+      {
+        text: 'Group of criteria (Neuro-fuzzy model only)',
+        value: 'group_criteria'
       }
     ],
 
@@ -120,6 +124,7 @@ export default Vue.extend({
         active: true,
         desiredValue: 0,
         weightingFactor: 0,
+        synapticWeight: 0,
         criteria: []
       }
       const payload = { model }

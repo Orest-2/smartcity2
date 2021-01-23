@@ -7,6 +7,7 @@ export const mock: Model[] = [
     title: 'M1',
     desiredValue: 0.9,
     weightingFactor: 8,
+    synapticWeight: 1,
     criteria: [
       {
         title: 'Коли між людьми відбувається конфлікт на ґрунті ідей, я віддаю перевагу тій стороні, що:',
@@ -112,6 +113,7 @@ export const mock: Model[] = [
     title: 'M2',
     desiredValue: 0,
     weightingFactor: 9,
+    synapticWeight: 1,
     criteria: [
       {
         title: 'Авіаційна метеорологія',
@@ -151,6 +153,7 @@ export const mock: Model[] = [
     title: 'M3',
     desiredValue: 0,
     weightingFactor: 10,
+    synapticWeight: 1,
     criteria: [
       {
         title: 'Практичне навчання з радіолокаційного контролю',
@@ -178,6 +181,7 @@ export const mock: Model[] = [
     title: 'M4',
     desiredValue: 0,
     weightingFactor: 7,
+    synapticWeight: 1,
     criteria: [
       {
         title: 'Основи психології пілотів',
@@ -245,6 +249,28 @@ export const algorithms: Algorithm = {
         title: 'B - "high level of the indicator"',
         a1: 8,
         a2: 10
+      }
+    ],
+    synapticWeights: [
+      {
+        title: 'IE - "important effect"',
+        a: 10
+      },
+      {
+        title: 'SE - "significant effect"',
+        a: 8
+      },
+      {
+        title: 'ME - "medium effect"',
+        a: 6
+      },
+      {
+        title: 'BE - "insignificant effect"',
+        a: 4
+      },
+      {
+        title: 'LE - "little or no effect"',
+        a: 2
       }
     ]
   }

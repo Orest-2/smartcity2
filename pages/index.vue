@@ -4,9 +4,9 @@
       cols="12"
       class="py-0"
     >
-      <v-card class="px-4 py-2">
+      <v-card class="px-2 py-2">
         <div v-if="!showResult">
-          <div class="text-center elevation-1 my-2 pa-2">
+          <div class="text-center elevation-1 mt-2 mb-5 pa-2">
             <span class="headline">Incoming data</span>
 
             <v-row
