@@ -44,6 +44,20 @@
       :data="sw"
     />
     <v-divider />
+
+    <v-card-title>
+      <span class="subtitle-1">
+        <b>
+          The scale of the original variable Y of the neuro-fuzzy model:
+        </b>
+      </span>
+    </v-card-title>
+
+    <alg-m-3-ovy-item
+      v-for="(ov, i) in originalVariableY"
+      :key="`M3-OVY-${i}`"
+      :data="ov"
+    />
   </v-card>
 </template>
 
@@ -60,7 +74,8 @@ import { RootState } from '~/types/store'
 const state = {
   linguisticVariablesM2: (s: RootState) => s.settings.algorithms.M2.linguisticVariables,
   linguisticVariablesM3: (s: RootState) => s.settings.algorithms.M3.linguisticVariables,
-  synapticWeightsM3: (s: RootState) => s.settings.algorithms.M3.synapticWeights
+  synapticWeightsM3: (s: RootState) => s.settings.algorithms.M3.synapticWeights,
+  originalVariableY: (s: RootState) => s.settings.algorithms.M3.originalVariableY
 }
 
 export type State = typeof state

@@ -96,6 +96,14 @@ export const actions: ActionTree<CalculatorState, RootState> = {
       res.hybridFuzzyModel.result = inDataM2.map(el => calcFunc(el))
     }
 
+    if (evaluationModel === 'M3') {
+      const inDataM3 = rootState.home.data.map(d => d.W)
+
+      res.neuroFuzzyNetwork.result = inDataM3.slice(1).reduce((s, w) => {
+        return s.map((s, i) => s + w[i])
+      }, inDataM3[0])
+    }
+
     commit('SET_RESULT', res)
 
     // console.log(res)

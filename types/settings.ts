@@ -10,7 +10,7 @@ export interface Criterion {
   answers: Answer[];
 }
 
-export type ModelTypes = 'tests' | 'values'
+export type ModelTypes = 'tests' | 'values' | 'group_criteria'
 export interface Model {
   title: string;
   type: ModelTypes;
@@ -44,5 +44,6 @@ export interface Algorithm {
   M3: {
     linguisticVariables: LinguisticVariableM3[]
     synapticWeights: SynapticWeightM3[]
+    originalVariableY: LinguisticVariableM3[]
   }
 }

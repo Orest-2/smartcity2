@@ -182,8 +182,10 @@ export default Vue.extend({
   },
 
   mounted () {
-    const indx = Math.floor(this.synapticWeightsM3.length / 2)
-    this.synapticWeight = this.synapticWeightsM3[indx].value
+    if (!this.synapticWeight) {
+      const indx = Math.floor(this.synapticWeightsM3.length / 2)
+      this.synapticWeight = this.synapticWeightsM3[indx].value
+    }
   },
 
   methods: {

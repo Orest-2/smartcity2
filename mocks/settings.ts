@@ -208,6 +208,126 @@ export const mock: Model[] = [
         answers: []
       }
     ]
+  },
+  {
+    title: 'K1',
+    type: 'group_criteria',
+    active: true,
+    desiredValue: 0,
+    weightingFactor: 0,
+    synapticWeight: 10,
+    criteria: [
+      {
+        answers: [],
+        title: 'K11',
+        desiredValue: 0,
+        synapticWeight: 10
+      },
+      {
+        answers: [],
+        title: 'K12',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'K13',
+        desiredValue: 0,
+        synapticWeight: 10
+      },
+      {
+        answers: [],
+        title: 'K14',
+        desiredValue: 0,
+        synapticWeight: 9
+      },
+      {
+        answers: [],
+        title: 'K15',
+        desiredValue: 0,
+        synapticWeight: 8
+      }
+    ]
+  },
+  {
+    title: 'K2',
+    type: 'group_criteria',
+    active: true,
+    desiredValue: 0,
+    weightingFactor: 0,
+    synapticWeight: 6,
+    criteria: [
+      {
+        answers: [],
+        title: 'K21',
+        desiredValue: 0,
+        synapticWeight: 9
+      },
+      {
+        answers: [],
+        title: 'K22',
+        desiredValue: 0,
+        synapticWeight: 7
+      },
+      {
+        answers: [],
+        title: 'K23',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'K24',
+        desiredValue: 0,
+        synapticWeight: 7
+      },
+      {
+        answers: [],
+        title: 'K25',
+        desiredValue: 0,
+        synapticWeight: 7
+      }
+    ]
+  },
+  {
+    title: 'K3',
+    type: 'group_criteria',
+    active: true,
+    desiredValue: 0,
+    weightingFactor: 0,
+    synapticWeight: 8,
+    criteria: [
+      {
+        answers: [],
+        title: 'K31',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'K32',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'K33',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'K34',
+        desiredValue: 0,
+        synapticWeight: 9
+      },
+      {
+        answers: [],
+        title: 'K35',
+        desiredValue: 0,
+        synapticWeight: 7
+      }
+    ]
   }
 ]
 
@@ -271,6 +391,33 @@ export const algorithms: Algorithm = {
       {
         title: 'LE - "little or no effect"',
         a: 2
+      }
+    ],
+    originalVariableY: [
+      {
+        title: 'high',
+        a2: 1,
+        a1: 0.87
+      },
+      {
+        title: 'above average',
+        a2: 0.87,
+        a1: 0.67
+      },
+      {
+        title: 'average',
+        a2: 0.67,
+        a1: 0.37
+      },
+      {
+        title: 'low',
+        a2: 0.37,
+        a1: 0.21
+      },
+      {
+        title: 'very low',
+        a2: 0.21,
+        a1: 0
       }
     ]
   }

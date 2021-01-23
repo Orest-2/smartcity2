@@ -13,8 +13,14 @@ export const state = () => ({
 export type SettingsState = ReturnType<typeof state>
 
 export const getters: GetterTree<SettingsState, RootState> = {
-  getActiveModels (state) {
-    return state.models.filter(m => m.active)
+  getActiveModels (state, _, rootState) {
+    const alg = rootState.home.evaluationModel
+    return state.models.filter(
+      m => m.active &&
+        alg === 'M3'
+        ? m.type === 'group_criteria'
+        : m.type !== 'group_criteria'
+    )
   },
 
   getModel (s) {

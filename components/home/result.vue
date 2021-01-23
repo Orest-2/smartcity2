@@ -137,6 +137,52 @@
       </v-col>
 
       <v-col
+        v-if="['M3'].includes(evaluationModel)"
+        cols="12"
+        md="8"
+        class="mx-auto"
+      >
+        <v-row
+          dense
+          align-content="center"
+          justify="center"
+        >
+          <v-col
+            cols="2"
+            class="d-flex align-center justify-center"
+          >
+            Specialists
+          </v-col>
+          <v-col
+            cols="4"
+            class="d-flex align-center justify-center"
+          >
+            Specialist rating
+          </v-col>
+        </v-row>
+        <v-divider class="my-2" />
+        <v-row
+          v-for="(el) in neuroFuzzyNetworkResult"
+          :key="el.i"
+          align-content="center"
+          justify="center"
+        >
+          <v-col
+            cols="2"
+            class="d-flex align-center justify-center"
+          >
+            {{ el.text }}
+          </v-col>
+          <v-col
+            cols="4"
+            class="d-flex align-center justify-center"
+          >
+            {{ getLinguisticEvaluation(el.value) }} ({{ el.value.toFixed(4) }})
+          </v-col>
+        </v-row>
+      </v-col>
+
+      <v-col
         cols="12"
       >
         <v-btn
@@ -170,7 +216,8 @@ const state = {
   evaluationModel: (s: RootState) => s.home.evaluationModel,
   dataM2: (s: RootState) => s.home.dataM2,
   result: (s: RootState) => s.calculator.result,
-  linguisticVariables: (s: RootState) => s.settings.algorithms.M2.linguisticVariables
+  linguisticVariables: (s: RootState) => s.settings.algorithms.M2.linguisticVariables,
+  originalVariableY: (s: RootState) => s.settings.algorithms.M3.originalVariableY
 }
 
 export type State = typeof state
@@ -231,6 +278,21 @@ export default Vue.extend({
         .sort(
           (a, b) => b.value - a.value
         )
+    },
+
+    neuroFuzzyNetworkResult (): { text: string; value: number; }[] {
+      return this.result.neuroFuzzyNetwork.result
+        .map(
+          (el, i) => {
+            return {
+              text: `e${i + 1}`,
+              value: el
+            }
+          }
+        )
+        .sort(
+          (a, b) => b.value - a.value
+        )
     }
   },
 
@@ -240,6 +302,12 @@ export default Vue.extend({
       calculate: 'calculator/calculate',
       setDataM2: 'home/setDataM2'
     }),
+
+    getLinguisticEvaluation (val: number) {
+      return this.originalVariableY.find((el) => {
+        return val > el.a1 && val <= el.a2
+      })?.title
+    },
 
     toOptionArray (arr: any[]): any[] {
       return arr.map((el: any) => ({ text: el.title, value: el.k }))
@@ -274,7 +342,9 @@ export default Vue.extend({
     },
 
     back () {
-      this.setEvaluationModel({ n: 'M1' })
+      if (this.evaluationModel === 'M2') {
+        this.setEvaluationModel({ n: 'M1' })
+      }
       this.$emit('input', false)
     }
   }

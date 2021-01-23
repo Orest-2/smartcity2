@@ -15,7 +15,7 @@ export interface Result {
     result: number[]
   },
   neuroFuzzyNetwork: {
-    intermediateResults: [],
-    result: []
+    intermediateResults: number[],
+    result: number[]
   }
 }

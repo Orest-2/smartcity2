@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import { linearSshaped } from '~/constants/membership-functions'
 import { homeDataMock } from '~/mocks/home'
 import { CriterionData, DataM2, ModelData } from '~/types/home'
 import { Model } from '~/types/settings'
@@ -59,8 +60,9 @@ export const mutations: MutationTree<HomeState> = {
 }
 
 export const actions: ActionTree<HomeState, RootState> = {
-  mockData ({ commit, dispatch }) {
-    commit('SET_SPECIALIST_N', 7)
+  mockData ({ commit, dispatch, rootState }) {
+    const alg = rootState.home.evaluationModel
+    commit('SET_SPECIALIST_N', alg === 'M3' ? 5 : 7)
     dispatch('initData', { mock: true })
   },
 
@@ -69,13 +71,19 @@ export const actions: ActionTree<HomeState, RootState> = {
     dispatch('initData')
   },
 
-  setEvaluationModel ({ commit }, { n }) {
+  setEvaluationModel ({ commit, dispatch }, { n }) {
     commit('SET_EVALUATION_MODEL', n)
+    if (n !== 'M2') {
+      dispatch('initData')
+    }
   },
 
   initData ({ rootGetters, state, rootState, commit }, { mock } = {}) {
+    const alg = rootState.home.evaluationModel
     const { linguisticVariables } = rootState.settings.algorithms.M3
     const models: Model[] = rootGetters['settings/getActiveModels']
+
+    const modelSynapticWeightSum = models.reduce((s, m) => s + m.synapticWeight, 0)
 
     const res = models.map<ModelData>(
       (el, i) => {
@@ -89,17 +97,41 @@ export const actions: ActionTree<HomeState, RootState> = {
 
         return {
           modelDesiredValue: el.desiredValue,
+          synapticWeight: el.synapticWeight,
           data: el.criteria.map<CriterionData>(
             (el, j) => {
               return {
                 desiredValue: el.desiredValue,
-                data: mock ? homeDataMock[i].data[j].data : Array(state.specialistN).fill(0),
-                l: Array(state.specialistN).fill(linguisticVariables[0]),
+                synapticWeight: el.synapticWeight,
+                data: mock
+                  ? alg === 'M3'
+                      ? homeDataMock[i].data[j].dataM3
+                      : homeDataMock[i].data[j].data
+                  : Array(state.specialistN).fill(0),
+                l: mock
+                  ? homeDataMock[i].data[j].l
+                  : Array(state.specialistN).fill(linguisticVariables[0]),
                 get min () {
                   return Math.min(...this.data)
                 },
                 get max () {
                   return Math.max(...this.data)
+                },
+                get O () {
+                  return this.data.reduce((res: number[], d, i) => {
+                    const o = this.l[i]?.a2 * d
+                    res.push(o)
+                    return res
+                  }, [])
+                },
+                get mO () {
+                  const a = linguisticVariables[0].a1
+                  const b = linguisticVariables[linguisticVariables.length - 1].a2
+                  return this.O.reduce((r: number[], d) => {
+                    const mo = linearSshaped(d, a, b)
+                    r.push(mo)
+                    return r
+                  }, [])
                 }
               }
             }
@@ -131,6 +163,27 @@ export const actions: ActionTree<HomeState, RootState> = {
           get w () {
             const s = models.reduce((a, b) => a + b.weightingFactor, 0)
             return el.weightingFactor / s
+          },
+          get Z () {
+            const initRes = {
+              a: 0,
+              b: Array<number>(state.specialistN).fill(0)
+            }
+
+            const resSum = this.data.reduce((sum, c) => {
+              sum.a += c.synapticWeight
+              sum.b = sum.b.map((n, i) => n + (c.mO[i] * c.synapticWeight))
+              return sum
+            }, initRes)
+
+            const s = resSum.b.map(el => (1 / resSum.a) * el)
+
+            return s
+          },
+          get W () {
+            return this.Z.map((z) => {
+              return (this.synapticWeight / modelSynapticWeightSum) * z
+            })
           }
         }
       }

@@ -27,3 +27,14 @@ export const squareSpline = (t: number, a: number, b:number): number => {
 
   return 1 - 2 * Math.pow(f / s, 2)
 }
+
+export const linearSshaped = (o:number, a: number, b:number): number => {
+  if (o <= a) { return 0 }
+
+  if (o >= b) { return 1 }
+
+  const f = o - a
+  const fs = b - a
+
+  return f / fs
+}
