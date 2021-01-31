@@ -1,4 +1,5 @@
 export const en = {
   home: 'Home',
-  settings: 'Settings'
+  settings: 'Settings',
+  in_data: 'Incoming data'
 }

@@ -22,7 +22,9 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title>
+              {{ $t(item.title) }}
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -97,6 +99,8 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'DefaultLayout',
+
   data () {
     return {
       light: true,
@@ -105,12 +109,12 @@ export default Vue.extend({
       items: [
         {
           icon: 'mdi-home',
-          title: this.$t('home'),
+          title: 'home',
           to: '/'
         },
         {
           icon: 'mdi-cog',
-          title: this.$t('settings'),
+          title: 'settings',
           to: '/settings'
         }
       ],

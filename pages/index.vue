@@ -7,7 +7,9 @@
       <v-card class="px-2 py-2">
         <div v-if="!showResult">
           <div class="text-center elevation-1 mt-2 mb-5 pa-2">
-            <span class="headline">Incoming data</span>
+            <span class="headline">
+              {{ $t('in_data') }}
+            </span>
 
             <v-row
               class="flex-column"
@@ -91,6 +93,8 @@ const state = {
 export type State = typeof state
 
 export default Vue.extend({
+  name: 'Home',
+
   components: { model, Actions, Result, M2Input },
 
   data () {

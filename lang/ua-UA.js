@@ -1,4 +1,5 @@
 export const ua = {
   home: 'Головна',
-  settings: 'Настройки'
+  settings: 'Настройки',
+  in_data: 'Вхідні дані'
 }
