@@ -56,6 +56,7 @@ export default {
       }
     ],
     defaultLocale: 'en',
+    strategy: 'no_prefix',
     vuex: {
       moduleName: 'i18n',
       syncLocale: true,
