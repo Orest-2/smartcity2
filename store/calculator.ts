@@ -107,8 +107,6 @@ export const actions: ActionTree<CalculatorState, RootState> = {
 
     commit('SET_RESULT', res)
 
-    // console.log(res)
-
     return Promise.resolve(res)
   }
 }

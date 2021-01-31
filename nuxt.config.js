@@ -1,4 +1,6 @@
 import colors from 'vuetify/lib/util/colors'
+import { en } from './lang/en-US'
+import { ua } from './lang/ua-UA'
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -38,8 +40,36 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-i18n'
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'ua',
+        name: 'Ukrainian (Український)'
+      }
+    ],
+    defaultLocale: 'en',
+    vuex: {
+      moduleName: 'i18n',
+      syncLocale: true,
+      syncMessages: true,
+      syncRouteParams: true
+    },
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en,
+        ua
+      }
+    }
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},

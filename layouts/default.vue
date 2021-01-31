@@ -1,5 +1,8 @@
 <template>
-  <v-app light>
+  <v-app
+    :key="$i18n.locale"
+    light
+  >
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -46,6 +49,28 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
       <v-spacer />
+      <v-menu offset-y>
+        <template v-slot:activator="{ attrs, on }">
+          <v-btn
+            class="ma-5"
+            v-bind="attrs"
+            v-on="on"
+          >
+            {{ $i18n.localeProperties.name }}
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            link
+            @click="setL(locale.code)"
+          >
+            <v-list-item-title v-text="locale.name" />
+          </v-list-item>
+        </v-list>
+      </v-menu>
       <v-btn
         icon
         @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark"
@@ -80,16 +105,28 @@ export default Vue.extend({
       items: [
         {
           icon: 'mdi-home',
-          title: 'Home',
+          title: this.$t('home'),
           to: '/'
         },
         {
           icon: 'mdi-cog',
-          title: 'Settings',
+          title: this.$t('settings'),
           to: '/settings'
         }
       ],
       title: 'Smart City'
+    }
+  },
+
+  computed: {
+    availableLocales () {
+      return this.$i18n.locales?.filter(i => typeof i !== 'string' && i.code !== this.$i18n.locale)
+    }
+  },
+
+  methods: {
+    setL (code: string) {
+      this.$i18n.setLocale(code)
     }
   }
 })
