@@ -23,7 +23,7 @@
                 <v-select
                   v-model="em"
                   :items="evaluationModels"
-                  label="Select evaluation model"
+                  :label="$t('select_evaluation_model')"
                   hide-details="auto"
                 />
               </v-col>
@@ -100,7 +100,7 @@ export default Vue.extend({
   data () {
     return {
       showResult: false,
-      evaluationModels
+      evaluationModels: evaluationModels.map(el => ({ ...el, text: this.$t(el.text) }))
     }
   },
 

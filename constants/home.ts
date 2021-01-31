@@ -1,14 +1,14 @@
 export const evaluationModels = [
   {
-    text: 'M1 - fuzzy model for assessing the competence of specialists',
+    text: 'evaluation_model_m1',
     value: 'M1'
   },
   {
-    text: 'M2 - hybrid fuzzy model',
+    text: 'evaluation_model_m2',
     value: 'M2'
   },
   {
-    text: 'M3 - neuro-fuzzy evaluation network',
+    text: 'evaluation_model_m3',
     value: 'M3'
   }
 ]
