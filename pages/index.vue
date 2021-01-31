@@ -41,12 +41,18 @@
             </v-row>
           </div>
 
-          <div v-show="sn">
+          <div
+            v-if="!['M2'].includes(em)"
+            v-show="sn"
+          >
             <model
               v-for="(m, mi) in models"
               :key="mi"
               :model="Object.freeze(m)"
             />
+          </div>
+          <div v-else>
+            <m-2-input />
           </div>
         </div>
 
@@ -74,6 +80,7 @@ import { evaluationModels } from '~/constants/home'
 import Actions from '~/components/home/actions.vue'
 import model from '~/components/home/model.vue'
 import Result from '~/components/home/result.vue'
+import M2Input from '~/components/home/m2-input.vue'
 
 const state = {
   specialistN: (s: RootState) => s.home.specialistN,
@@ -84,7 +91,7 @@ const state = {
 export type State = typeof state
 
 export default Vue.extend({
-  components: { model, Actions, Result },
+  components: { model, Actions, Result, M2Input },
 
   data () {
     return {

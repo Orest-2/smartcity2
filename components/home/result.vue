@@ -342,9 +342,6 @@ export default Vue.extend({
     },
 
     back () {
-      if (this.evaluationModel === 'M2') {
-        this.setEvaluationModel({ n: 'M1' })
-      }
       this.$emit('input', false)
     }
   }

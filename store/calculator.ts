@@ -93,6 +93,7 @@ export const actions: ActionTree<CalculatorState, RootState> = {
         return Math.pow(el.m1Value, el.k)
       }
 
+      res.fuzzyModel.result = inDataM2.map(el => Number(el.m1Value))
       res.hybridFuzzyModel.result = inDataM2.map(el => calcFunc(el))
     }
 

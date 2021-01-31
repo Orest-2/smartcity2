@@ -9,7 +9,7 @@
       justify="center"
     >
       <v-col
-        v-if="!value"
+        v-if="!['M2'].includes(evaluationModel) && !value"
         cols="12"
       >
         <v-btn
@@ -42,7 +42,8 @@ import { mapState, mapActions } from 'vuex'
 import { RootState } from '~/types/store'
 
 const state = {
-  specialistN: (s: RootState) => s.home.specialistN
+  specialistN: (s: RootState) => s.home.specialistN,
+  evaluationModel: (s: RootState) => s.home.evaluationModel
 }
 
 export type State = typeof state

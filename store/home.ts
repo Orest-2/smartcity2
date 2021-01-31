@@ -105,8 +105,8 @@ export const actions: ActionTree<HomeState, RootState> = {
                 synapticWeight: el.synapticWeight,
                 data: mock
                   ? alg === 'M3'
-                      ? homeDataMock[i].data[j].dataM3
-                      : homeDataMock[i].data[j].data
+                    ? homeDataMock[i].data[j].dataM3
+                    : homeDataMock[i].data[j].data
                   : Array(state.specialistN).fill(0),
                 l: mock
                   ? homeDataMock[i].data[j].l
