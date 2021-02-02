@@ -3,7 +3,7 @@
     <v-card-title>
       <span class="subtitle-1">
         <b>
-          Linguistic variables of a fuzzy hybrid model for evaluating specialists
+          {{ $t('linguistic_variables_of_fuzzy_hybrid_model_for_evaluating_specialists') }}
         </b>
       </span>
     </v-card-title>
@@ -18,7 +18,7 @@
     <v-card-title>
       <span class="subtitle-1">
         <b>
-          Linguistic variables of a neuro-fuzzy model for evaluating specialists
+          {{ $t('linguistic_variables_of_neuro_fuzzy_model_for_evaluating_specialists') }}
         </b>
       </span>
     </v-card-title>
@@ -33,7 +33,7 @@
     <v-card-title>
       <span class="subtitle-1">
         <b>
-          The synaptic weights of the groups of criteria neuro-fuzzy model:
+          {{ $t('the_synaptic_weights_of_the_groups_of_criteria_neuro_fuzzy_model') }}
         </b>
       </span>
     </v-card-title>
@@ -48,7 +48,7 @@
     <v-card-title>
       <span class="subtitle-1">
         <b>
-          The scale of the original variable Y of the neuro-fuzzy model:
+          {{ $t('the_scale_of_the_original_variable_Y_of_the_neuro_fuzzy_model') }}
         </b>
       </span>
     </v-card-title>

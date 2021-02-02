@@ -14,10 +14,10 @@
           v-model="tab"
         >
           <v-tab>
-            Model
+            {{ $t('model') }}
           </v-tab>
           <v-tab>
-            Algorithm
+            {{ $t('algorithm') }}
           </v-tab>
         </v-tabs>
 
@@ -27,7 +27,9 @@
               flat
               class="mb-4"
             >
-              <v-toolbar-title>Model Settings</v-toolbar-title>
+              <v-toolbar-title>
+                {{ $t('model_settings') }}
+              </v-toolbar-title>
 
               <v-spacer />
 
@@ -44,7 +46,7 @@
                     >
                       mdi-plus
                     </v-icon>
-                    Add model
+                    {{ $t('add_model') }}
                   </v-btn>
                 </template>
               </add-model-dialog>
@@ -64,7 +66,9 @@
             <v-toolbar
               flat
             >
-              <v-toolbar-title>Algorithm Settings</v-toolbar-title>
+              <v-toolbar-title>
+                {{ $t('algorithm_settings') }}
+              </v-toolbar-title>
             </v-toolbar>
 
             <algorithm />

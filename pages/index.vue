@@ -33,7 +33,7 @@
               >
                 <v-text-field
                   v-model.number="sn"
-                  label="The number of specialists"
+                  :label="$t('number_of_specialists')"
                   placeholder="Please enter the number of specialists"
                   hide-details="auto"
                   type="number"

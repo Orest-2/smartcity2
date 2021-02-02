@@ -1,7 +1,9 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="subtitle-1">Criteria</span>
+      <span class="subtitle-1">
+        {{ $t('сriteria') }}
+      </span>
     </v-card-title>
     <v-card-text>
       <v-container class="py-0">
@@ -26,7 +28,7 @@
           >
             mdi-plus
           </v-icon>
-          Add one more criterion
+          {{ $t('add_one_more_criterion') }}
         </v-btn>
       </v-container>
     </v-card-text>

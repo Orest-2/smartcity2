@@ -1,7 +1,9 @@
 <template>
   <div class="text-center elevation-1 my-2 pa-2">
     <div class="mb-3">
-      <span class="headline">Result</span>
+      <span class="headline">
+        {{ $t('result') }}
+      </span>
     </div>
 
     <v-row
@@ -24,20 +26,20 @@
             cols="2"
             class="d-flex align-center justify-center"
           >
-            Specialists
+            {{ $t('specialists') }}
           </v-col>
           <v-col
             cols="3"
             class="d-flex align-center justify-center"
           >
-            Aggregate assessment of specialists' competencies
+            {{ $t('aggregate_assessment_of_specialists_competencies') }}
           </v-col>
           <v-col
             v-if="continueUsingM2"
             cols="4"
             class="d-flex align-center justify-center"
           >
-            Manager's thoughts on the task
+            {{ $t('managers_thoughts_on_the_task') }}
           </v-col>
         </v-row>
         <v-divider />
@@ -83,7 +85,7 @@
       >
         <v-checkbox
           v-model="continueUsingM2"
-          label="Involvement of expert opinion"
+          :label="$t('involvement_of_expert_opinion')"
           hide-details="auto"
           class="d-inline-block"
         />
@@ -104,7 +106,7 @@
             cols="2"
             class="d-flex align-center justify-center"
           >
-            Specialists
+            {{ $t('specialists') }}
           </v-col>
           <v-col
             cols="3"
@@ -151,13 +153,13 @@
             cols="2"
             class="d-flex align-center justify-center"
           >
-            Specialists
+            {{ $t('specialists') }}
           </v-col>
           <v-col
             cols="4"
             class="d-flex align-center justify-center"
           >
-            Specialist rating
+            {{ $t('specialist_rating') }}
           </v-col>
         </v-row>
         <v-divider class="my-2" />
@@ -189,7 +191,7 @@
           class="mx-2"
           @click="back"
         >
-          Back
+          {{ $t('back') }}
         </v-btn>
 
         <v-btn
@@ -198,7 +200,7 @@
           class="mx-2"
           @click="calculateM2"
         >
-          Evaluate
+          {{ $t('evaluate') }}
         </v-btn>
       </v-col>
     </v-row>

@@ -1,7 +1,9 @@
 <template>
   <v-card class="elevation-0">
     <v-card-title>
-      <span class="subtitle-2">Answers</span>
+      <span class="subtitle-2">
+        {{ $t('answers') }}
+      </span>
     </v-card-title>
     <v-card-text>
       <v-lazy>
@@ -28,7 +30,7 @@
             >
               mdi-plus
             </v-icon>
-            Add one more answer
+            {{ $t('add_one_more_answer') }}
           </v-btn>
         </v-container>
       </v-lazy>

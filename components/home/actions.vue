@@ -1,7 +1,9 @@
 <template>
   <div class="text-center elevation-1 my-2 pa-2">
     <div class="mb-3">
-      <span class="headline">Actions</span>
+      <span class="headline">
+        {{ $t('actions') }}
+      </span>
     </div>
 
     <v-row
@@ -16,7 +18,7 @@
           class="mx-2"
           @click="mock"
         >
-          Fill with test data
+          {{ $t('fill_with_test_data') }}
         </v-btn>
       </v-col>
       <v-col
@@ -28,7 +30,7 @@
           class="mx-2"
           @click="calculateAndShowRes"
         >
-          Evaluate
+          {{ $t('evaluate') }}
         </v-btn>
       </v-col>
     </v-row>

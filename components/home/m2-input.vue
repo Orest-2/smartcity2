@@ -20,19 +20,19 @@
           cols="2"
           class="d-flex align-center justify-center"
         >
-          Specialists
+          {{ $t('specialists') }}
         </v-col>
         <v-col
           cols="3"
           class="d-flex align-center justify-center"
         >
-          Aggregate assessment of specialists' competencies
+          {{ $t('aggregate_assessment_of_specialists_competencies') }}
         </v-col>
         <v-col
           cols="4"
           class="d-flex align-center justify-center"
         >
-          Manager's thoughts on the task
+          {{ $t('managers_thoughts_on_the_task') }}
         </v-col>
       </v-row>
       <v-divider />
