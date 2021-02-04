@@ -29,5 +29,6 @@ export const ua = {
   managers_thoughts_on_the_task: 'Думка експерта про виконяння завдання',
   specialist_rating: 'Рейтинг фахівця',
   back: 'Назад',
-  involvement_of_expert_opinion: 'Залучення експертної думки'
+  involvement_of_expert_opinion: 'Залучення експертної думки',
+  see_intermediate_values: 'Див. проміжні значення'
 }

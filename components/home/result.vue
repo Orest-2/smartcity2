@@ -6,6 +6,44 @@
       </span>
     </div>
 
+    <v-expansion-panels
+      v-if="intermidiateValues.length"
+      class="mb-5"
+    >
+      <v-expansion-panel>
+        <v-expansion-panel-header>
+          <div class="text-center">
+            {{ $t('see_intermediate_values') }}
+          </div>
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <div
+            v-for="(iv, i) in intermidiateValues"
+            :key="i"
+            class="my-2"
+          >
+            <div
+              v-for="([k, v], j) in Object.entries(iv)"
+              :key="j"
+              class="d-flex justify-center align-center my-2"
+            >
+              <b class="mr-4">
+                {{ k }}
+              </b>
+              <div
+                class="text-pre-line"
+                v-html="getValue(v)"
+              />
+            </div>
+            <v-divider
+              v-if="i !== intermidiateValues.length -1"
+              class="mt-2"
+            />
+          </div>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+
     <v-row
       align-content="center"
       justify="center"
@@ -210,6 +248,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
+import { IntermediateFuzzyModelResult, IntermediateNeuroFuzzyNetworkResult } from '~/types/calculator'
 import { DataM2 } from '~/types/home'
 
 import { RootState } from '~/types/store'
@@ -295,6 +334,16 @@ export default Vue.extend({
         .sort(
           (a, b) => b.value - a.value
         )
+    },
+
+    intermidiateValues (): IntermediateFuzzyModelResult[] | IntermediateNeuroFuzzyNetworkResult[] {
+      if (this.evaluationModel === 'M1' || this.evaluationModel === 'M2') {
+        return this.result.fuzzyModel.intermediateResults
+      }
+      if (this.evaluationModel === 'M3') {
+        return this.result.neuroFuzzyNetwork.intermediateResults
+      }
+      return []
     }
   },
 
@@ -304,6 +353,18 @@ export default Vue.extend({
       calculate: 'calculator/calculate',
       setDataM2: 'home/setDataM2'
     }),
+
+    getValue (v: number | number[], n = -1): string {
+      if (Array.isArray(v)) {
+        const line = v.map((e, i) => this.getValue(e, i + 1))
+
+        n = Array.isArray(v[0]) ? -1 : 1
+
+        return `${n === -1 ? line.join('\n') : line.join(' | ')}`
+      }
+
+      return v.toFixed(4)
+    },
 
     getLinguisticEvaluation (val: number) {
       return this.originalVariableY.find((el) => {

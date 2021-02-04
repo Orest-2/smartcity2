@@ -6,6 +6,13 @@ export interface IntermediateFuzzyModelResult {
   readonly zw: number[];
 }
 
+export interface IntermediateNeuroFuzzyNetworkResult {
+  O: number[][];
+  mO: number[][];
+  Z: number[];
+  W: number[];
+}
+
 export interface Result {
   fuzzyModel: {
     intermediateResults: IntermediateFuzzyModelResult[],
@@ -15,7 +22,7 @@ export interface Result {
     result: number[]
   },
   neuroFuzzyNetwork: {
-    intermediateResults: number[],
+    intermediateResults: IntermediateNeuroFuzzyNetworkResult[],
     result: number[]
   }
 }

@@ -98,7 +98,20 @@ export const actions: ActionTree<CalculatorState, RootState> = {
     }
 
     if (evaluationModel === 'M3') {
+      const intermediateResults = rootState.home.data.map((d) => {
+        const O = d.data.map(e => e.O)
+        const mO = d.data.map(e => e.mO)
+        return {
+          O,
+          mO,
+          Z: d.Z,
+          W: d.W
+        }
+      })
+
       const inDataM3 = rootState.home.data.map(d => d.W)
+
+      res.neuroFuzzyNetwork.intermediateResults = intermediateResults
 
       res.neuroFuzzyNetwork.result = inDataM3.slice(1).reduce((s, w) => {
         return s.map((s, i) => s + w[i])

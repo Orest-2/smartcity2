@@ -29,5 +29,6 @@ export const en = {
   managers_thoughts_on_the_task: 'Manager\'s thoughts on the task',
   specialist_rating: 'Specialist rating',
   back: 'Back',
-  involvement_of_expert_opinion: 'Involvement of expert opinion'
+  involvement_of_expert_opinion: 'Involvement of expert opinion',
+  see_intermediate_values: 'See intermediate values'
 }
