@@ -373,7 +373,7 @@ export default Vue.extend({
     },
 
     toOptionArray (arr: any[]): any[] {
-      return arr.map((el: any) => ({ text: el.title, value: el.k }))
+      return arr.map((el: any) => ({ text: this.$t(el.title), value: el.k }))
     },
 
     initDataM2 () {

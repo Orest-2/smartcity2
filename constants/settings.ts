@@ -1,38 +1,38 @@
 export const desiredValueOptions = [
   {
-    text: 'синтезатор',
+    text: 'synthesizer',
     value: 0.2
   },
   {
-    text: 'синтезатор/ідеаліст',
+    text: 'synthesizer/idealist',
     value: 0.3
   },
   {
-    text: 'ідеаліст',
+    text: 'idealist',
     value: 0.4
   },
   {
-    text: 'ідеаліст/прагматик',
+    text: 'idealist/pragmatist',
     value: 0.5
   },
   {
-    text: 'прагматик',
+    text: 'pragmatist',
     value: 0.6
   },
   {
-    text: 'прагматик/аналітик',
+    text: 'pragmatist/analyst',
     value: 0.7
   },
   {
-    text: 'аналітик',
+    text: 'analyst',
     value: 0.8
   },
   {
-    text: 'аналітик/реаліст',
+    text: 'analyst/realist',
     value: 0.9
   },
   {
-    text: 'реаліст',
+    text: 'realist',
     value: 1
   }
 ]

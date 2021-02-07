@@ -10,7 +10,7 @@
       >
         <v-text-field
           v-model="title"
-          label="Title"
+          :label="$t('title')"
           hide-details="auto"
         />
       </v-col>

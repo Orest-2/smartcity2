@@ -13,7 +13,7 @@
         >
           <v-text-field
             v-model="title"
-            label="Title"
+            :label="$t('title')"
             hide-details="auto"
           />
         </v-col>
@@ -57,14 +57,14 @@
     <v-expansion-panel-content>
       <v-col>
         <div class="mb-2">
-          <span>Type:</span> {{ model.type }}
+          <span>{{ $t('type') }}:</span> {{ model.type }}
         </div>
         <v-row>
           <v-col v-if="model.type === 'tests'">
             <v-select
               v-model.number="desiredValue"
-              label="Fuzzy model desired value"
-              :items="desiredValueOptions"
+              :label="$t('fuzzy_model_desired_value')"
+              :items="desiredValueOptions.map((el) => ({ ...el, text: this.$t(el.text) }))"
               hide-details="auto"
             />
           </v-col>
@@ -72,15 +72,15 @@
             <v-text-field
               v-model.number="weightingFactor"
               type="number"
-              label="Fuzzy model weighting factor"
+              :label="$t('fuzzy_model_weighting_factor')"
               hide-details="auto"
             />
           </v-col>
           <v-col v-if="model.type === 'group_criteria'">
             <v-select
               v-model.number="synapticWeight"
-              label="Neuro-fuzzy model synaptic weight"
-              :items="synapticWeightsM3"
+              :label="$t('neuro_fuzzy_model_synaptic_weight')"
+              :items="toOptionArray(synapticWeightsM3)"
               hide-details="auto"
             />
           </v-col>
@@ -106,7 +106,7 @@ import { Model } from '~/types/settings'
 import { RootState } from '~/types/store'
 
 const state = {
-  synapticWeightsM3: (s: RootState) => s.settings.algorithms.M3.synapticWeights.map(e => ({ text: e.title, value: e.a }))
+  synapticWeightsM3: (s: RootState) => s.settings.algorithms.M3.synapticWeights
 }
 
 export type State = typeof state
@@ -184,7 +184,7 @@ export default Vue.extend({
   mounted () {
     if (!this.synapticWeight) {
       const indx = Math.floor(this.synapticWeightsM3.length / 2)
-      this.synapticWeight = this.synapticWeightsM3[indx].value
+      this.synapticWeight = this.toOptionArray(this.synapticWeightsM3)[indx].value
     }
   },
 
@@ -193,6 +193,10 @@ export default Vue.extend({
       updateModel: 'settings/updateModel',
       removeModel: 'settings/removeModel'
     }),
+
+    toOptionArray (arr: any[]): any[] {
+      return arr.map((el: any) => ({ text: this.$t(el.title), value: el.a }))
+    },
 
     remove () {
       this.removeModel({ index: this.index })

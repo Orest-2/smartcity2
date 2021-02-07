@@ -22,7 +22,9 @@
     </template>
     <v-card>
       <v-card-title>
-        <span class="headline">Add model</span>
+        <span class="headline">
+          {{ $t('add_model') }}
+        </span>
       </v-card-title>
       <v-card-text>
         <v-form
@@ -36,8 +38,8 @@
               >
                 <v-text-field
                   v-model="form.title"
-                  label="Title *"
-                  :rules="[v => !!v || 'Title is required']"
+                  :label="`${$t('title')} *`"
+                  :rules="[v => !!v || $t('title_is_required')]"
                   required
                 />
               </v-col>
@@ -47,14 +49,14 @@
               >
                 <v-select
                   v-model="form.type"
-                  label="Type *"
+                  :label="`${$t('type')} *`"
                   :items="types"
-                  :rules="[v => !!v || 'Type is required']"
+                  :rules="[v => !!v || $t('type_is_required')]"
                   required
                 />
               </v-col>
               <v-col>
-                <small>* indicates required field</small>
+                <small>* {{ $t('indicates_required_field') }}</small>
               </v-col>
             </v-row>
           </v-container>
@@ -67,14 +69,14 @@
           text
           @click="close"
         >
-          Close
+          {{ $t('close') }}
         </v-btn>
         <v-btn
           color="blue darken-1"
           text
           @click="add"
         >
-          Add
+          {{ $t('add') }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -88,29 +90,31 @@ import { mapActions } from 'vuex'
 import { Model, ModelTypes } from '~/types/settings'
 
 export default Vue.extend({
-  data: () => ({
-    dialog: false,
-    valid: true,
-    types: [
-      {
-        text: 'Testing model (Fuzzy model only)',
-        value: 'tests'
-      },
-      {
-        text: 'Values model (Fuzzy model only)',
-        value: 'values'
-      },
-      {
-        text: 'Group of criteria (Neuro-fuzzy model only)',
-        value: 'group_criteria'
-      }
-    ],
+  data () {
+    return {
+      dialog: false,
+      valid: true,
+      types: [
+        {
+          text: this.$t('testing_model_fuzzy_model_only'),
+          value: 'tests'
+        },
+        {
+          text: this.$t('values_model_fuzzy_model_only'),
+          value: 'values'
+        },
+        {
+          text: this.$t('group_of_criteria_neuro_fuzzy_model_only'),
+          value: 'group_criteria'
+        }
+      ],
 
-    form: {
-      title: '',
-      type: ''
+      form: {
+        title: '',
+        type: ''
+      }
     }
-  }),
+  },
 
   methods: {
     ...mapActions({

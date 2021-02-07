@@ -9,7 +9,7 @@
         dense
       >
         <v-col class="align-self-center">
-          {{ data.title }}
+          {{ $t(data.title) }}
         </v-col>
         <v-col class="align-self-center">
           <v-text-field

@@ -30,5 +30,18 @@ export const en = {
   specialist_rating: 'Specialist rating',
   back: 'Back',
   involvement_of_expert_opinion: 'Involvement of expert opinion',
-  see_intermediate_values: 'See intermediate values'
+  see_intermediate_values: 'See intermediate values',
+  close: 'Close',
+  add: 'Add',
+  indicates_required_field: 'indicates required field',
+  title_is_required: 'Title is required',
+  title: 'Title',
+  type_is_required: 'Type is required',
+  type: 'Type',
+  testing_model_fuzzy_model_only: 'Testing model (fuzzy model only)',
+  values_model_fuzzy_model_only: 'Values model (fuzzy model only)',
+  group_of_criteria_neuro_fuzzy_model_only: 'Group of criteria (neuro-fuzzy model only)',
+  fuzzy_model_desired_value: 'Fuzzy model desired value',
+  fuzzy_model_weighting_factor: 'Fuzzy model weighting factor',
+  neuro_fuzzy_model_synaptic_weight: 'Neuro-fuzzy model synaptic weight'
 }
