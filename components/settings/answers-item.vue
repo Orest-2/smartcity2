@@ -18,7 +18,7 @@
         <v-text-field
           v-model="score"
           type="number"
-          label="Score"
+          :label="$t('score')"
           hide-details="auto"
         />
       </v-col>

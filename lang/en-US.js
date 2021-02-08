@@ -43,5 +43,8 @@ export const en = {
   group_of_criteria_neuro_fuzzy_model_only: 'Group of criteria (neuro-fuzzy model only)',
   fuzzy_model_desired_value: 'Fuzzy model desired value',
   fuzzy_model_weighting_factor: 'Fuzzy model weighting factor',
-  neuro_fuzzy_model_synaptic_weight: 'Neuro-fuzzy model synaptic weight'
+  neuro_fuzzy_model_synaptic_weight: 'Neuro-fuzzy model synaptic weight',
+  desired_value: 'Desired value',
+  neuro_fuzzy_model_criterion_synaptic_weight: 'Neuro-fuzzy model criterion synaptic weight',
+  score: 'Score',
 }

@@ -26,14 +26,14 @@
               v-if="modelType === 'values'"
               v-model.number="desiredValue"
               type="number"
-              label="Desired value"
+              :label="$t('desired_value')"
               hide-details="auto"
             />
             <v-text-field
               v-if="modelType === 'group_criteria'"
               v-model.number="synapticWeight"
               type="number"
-              label="Neuro-fuzzy model criterion synaptic weight"
+              :label="$t('neuro_fuzzy_model_criterion_synaptic_weight')"
               hide-details="auto"
             />
           </v-col>

@@ -70,4 +70,7 @@ export const ua = {
   analyst: 'аналітик',
   'analyst/realist': 'аналітик/реаліст',
   realist: 'реаліст',
+  desired_value: 'Бажане значення',
+  neuro_fuzzy_model_criterion_synaptic_weight: 'Синаптична вага критерію нейро-нечіткої моделі',
+  score: 'Оцінка',
 }

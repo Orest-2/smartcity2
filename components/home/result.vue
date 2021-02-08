@@ -367,9 +367,10 @@ export default Vue.extend({
     },
 
     getLinguisticEvaluation (val: number) {
-      return this.originalVariableY.find((el) => {
+      const ovy = this.originalVariableY.find((el) => {
         return val > el.a1 && val <= el.a2
-      })?.title
+      })?.title || ''
+      return this.$t(ovy)
     },
 
     toOptionArray (arr: any[]): any[] {
