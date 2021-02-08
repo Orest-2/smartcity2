@@ -1,6 +1,6 @@
 export const ua = {
   home: 'Головна',
-  settings: 'Настройки',
+  settings: 'Налаштування',
   in_data: 'Вхідні дані',
   select_evaluation_model: 'Виберіть модель',
   evaluation_model_m1: 'M1 - нечітка модель оцінювання компетентності фахівці',
@@ -12,8 +12,8 @@ export const ua = {
   evaluate: 'Оцінити',
   model: 'Модель',
   algorithm: 'Алгоритм',
-  algorithm_settings: 'Настройки алгоритмів',
-  model_settings: 'Настройки моделей',
+  algorithm_settings: 'Налаштування алгоритмів',
+  model_settings: 'Налаштування моделей',
   add_model: 'Добавити модель',
   сriteria: 'Критерії',
   add_one_more_criterion: 'Добавити критерій',
