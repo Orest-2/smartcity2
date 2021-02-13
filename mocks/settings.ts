@@ -1,6 +1,6 @@
 import { Algorithm, Model } from '~/types/settings'
 
-export const mock: Model[] = [
+export const mockUA: Model[] = [
   {
     active: true,
     type: 'tests',
@@ -219,31 +219,31 @@ export const mock: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'K11',
+        title: 'Успішний досвід роботи над завданнями концепції транспорту в місті, контроль за реалізацією транспортних рішень, зменшення впливу на навколишнє середовище та оцінка дорожнього руху для зменшення аварій',
         desiredValue: 0,
         synapticWeight: 10
       },
       {
         answers: [],
-        title: 'K12',
+        title: 'Володіння професійними знаннями, вміннями та навичками, необхідними для виконання службових обов’язків, що підтверджується освітою',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'K13',
+        title: 'Здатність використовувати професійну та кваліфікаційну підготовку, грамотно, об’єктивно та неупереджено виконувати свої обов’язки',
         desiredValue: 0,
         synapticWeight: 10
       },
       {
         answers: [],
-        title: 'K14',
+        title: 'Здатність передбачати ризики, пов’язані із впровадженням транспортних рішень зі зменшеним впливом на довкілля та аваріями',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'K15',
+        title: 'Можливість складати плани досягнення цілей, структурувати обов\'язки, дотримуватися посадових інструкцій, своєчасно інформувати інших про будь-які зміни',
         desiredValue: 0,
         synapticWeight: 8
       }
@@ -259,31 +259,31 @@ export const mock: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'K21',
+        title: 'Відкритість для нових ідей, постійний рух вперед, зростання, орієнтація на інноваційні зміни для досягнення максимально ефективного результату',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'K22',
+        title: 'Правильна оцінка їх сильних і слабких сторін, постійний розвиток професійних та особистих якостей, бажання вирішувати складні професійні завдання для саморозвитку, накопичення знань та досвіду',
         desiredValue: 0,
         synapticWeight: 7
       },
       {
         answers: [],
-        title: 'K23',
+        title: 'Здатність здобувати знання та застосовувати їх на практиці',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'K24',
+        title: 'Ефективність та систематичність мислення',
         desiredValue: 0,
         synapticWeight: 7
       },
       {
         answers: [],
-        title: 'K25',
+        title: 'Стресостійкість та емоційна рівновага',
         desiredValue: 0,
         synapticWeight: 7
       }
@@ -299,31 +299,362 @@ export const mock: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'K31',
+        title: 'Здатність до спілкування, відкритість та здатність до співпраці',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'K32',
+        title: 'Здатність сприймати, накопичувати, класифікувати, аналізувати, засвоювати, використовувати та передавати інформацію',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'K33',
+        title: 'Навички колективної роботи',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'K34',
+        title: 'Вміння керувати людьми, ставити завдання, делегувати повноваження, бажання змагатися в боротьбі за верховенство і владу',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'K35',
+        title: 'Зосередьтеся на здобутті та підтримці власної репутації, визнанні, досягненні цілей, повазі серед людей',
+        desiredValue: 0,
+        synapticWeight: 7
+      }
+    ]
+  }
+]
+
+export const mock: Model[] = [
+  {
+    active: true,
+    type: 'tests',
+    title: 'M1',
+    desiredValue: 0.9,
+    weightingFactor: 8,
+    synapticWeight: 1,
+    criteria: [
+      {
+        title: 'When there is a conflict between people based on ideas, I prefer the side that:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 5, title: 'Accepts, acknowledges the conflict and tries to express it openly (5 points)' },
+          { score: 10, title: 'Affects my own values ​​and ideals more than others (10 points)' },
+          { score: 15, title: 'Better than others reflects my personal views and experiences (15 points)' },
+          { score: 25, title: 'Fits the situation most logical and consistent (25 points)' },
+          { score: 30, title: 'Presents the arguments most briefly and convincingly (30 points)' }
+        ]
+      },
+      {
+        title: 'When I start working on a project as a group, the most important thing for me:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 5, title: 'Understand the purpose and significance of this project (5 points)' },
+          { score: 10, title: 'To reveal the purpose and values of the participants of the working group (10 points)' },
+          { score: 15, title: 'Determine how we are going to develop this project (15 points)' },
+          { score: 20, title: 'Understand what benefits this project can bring to our group (20 points)' },
+          { score: 30, title: 'That the work on the project was organized and moved (30 points)' }
+        ]
+      },
+      {
+        title: 'Generally speaking, I absorb new ideas as best when I can:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 5, title: 'Link them to current or future activities (5 points)' },
+          { score: 10, title: 'Apply them to specific situations (10 points)' },
+          { score: 15, title: 'Focus on them and analyze them carefully (15 points)' },
+          { score: 20, title: 'Understand how similar they are to familiar ideas (20 points)' },
+          { score: 30, title: 'Oppose them to other ideas (30 points)' }
+        ]
+      },
+      {
+        title: 'I will probably consider something right, true, if it is "something":',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 5, title: 'Resisted the opposition, withstood the resistance of opposing approaches (5 points)' },
+          { score: 10, title: 'Consistent with other things I believe (10 points)' },
+          { score: 20, title: 'It was confirmed by practice (20 points)' },
+          { score: 22, title: 'Subject to logical and scientific proof (22 points)' },
+          { score: 25, title: 'You can check in person on the facts available for observation (25 points)' }
+        ]
+      },
+      {
+        title: 'When I read a job report, I pay the most attention to:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 10, title: 'Proximity of conclusions to my personal experience (10 points)' },
+          { score: 15, title: 'Ability to implement these recommendations (15 points)' },
+          { score: 20, title: 'Reliability and validity of the results with actual data (20 points)' },
+          { score: 25, title: 'The author\'s understanding of the goals and objectives of the work (25 points)' },
+          { score: 30, title: 'Data interpretation (30 points)' }
+        ]
+      },
+      {
+        title: 'When I am faced with a task, the first thing I want to know is:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 10, title: 'What is the best method to solve this problem (10 points)' },
+          { score: 12, title: 'Who and when needs this task to be solved (12 points)' },
+          { score: 15, title: 'Why this task should be solved (15 points)' },
+          { score: 20, title: 'What impact can its solution have on other tasks to be solved (20 points)' },
+          { score: 25, title: 'What a direct, immediate benefit from solving this problem (25 points)' }
+        ]
+      },
+      {
+        title: 'If I had to pass a test or an exam, I would prefer to have one:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 10, title: 'A set of objective, problem-oriented questions on the subject (10 points)' },
+          { score: 12, title: 'Discuss with those who also pass the exam (12 points)' },
+          { score: 15, title: 'Oral presentation and demonstration of what I know (15 points)' },
+          { score: 20, title: 'Free-form messages about how I applied what I learned (20 points)' },
+          { score: 25, title: 'Written report covering the history of the issue, theory and method (25 points)' }
+        ]
+      },
+      {
+        title: 'When I first approach a technical problem, I most likely will:',
+        desiredValue: 0,
+        synapticWeight: 0,
+        answers: [
+          { score: 5, title: 'Try to relate it to a more general problem or theory (5 points)' },
+          { score: 10, title: 'Look for ways and means to solve this problem (10 points)' },
+          { score: 15, title: 'Consider alternative ways to solve it (15 points)' },
+          { score: 20, title: 'Look for ways in which others have already solved this problem (20 points)' },
+          { score: 25, title: 'Try to find the best procedure to solve it (25 points)' }
+        ]
+      }
+    ]
+  },
+  {
+    active: true,
+    type: 'values',
+    title: 'M2',
+    desiredValue: 0,
+    weightingFactor: 9,
+    synapticWeight: 1,
+    criteria: [
+      {
+        title: 'Aviation Meteorology',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Aerodynamics and flight mechanics',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Mass and balance of aircraft',
+        desiredValue: 92,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Air communication',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Aviation technology',
+        desiredValue: 97,
+        synapticWeight: 0,
+        answers: []
+      }
+    ]
+  },
+  {
+    active: true,
+    type: 'values',
+    title: 'M3',
+    desiredValue: 0,
+    weightingFactor: 10,
+    synapticWeight: 1,
+    criteria: [
+      {
+        title: 'Practical training in radar control',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Training on a pilot simulator',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Learning the basics of flight',
+        desiredValue: 93,
+        synapticWeight: 0,
+        answers: []
+      }
+    ]
+  },
+  {
+    active: true,
+    type: 'values',
+    title: 'M4',
+    desiredValue: 0,
+    weightingFactor: 7,
+    synapticWeight: 1,
+    criteria: [
+      {
+        title: 'Fundamentals of Pilot Psychology',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Fundamentals of pedagogy',
+        desiredValue: 90,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Etiquette, image, business and protocol',
+        desiredValue: 90,
+        synapticWeight: 0,
+        answers: []
+      },
+      {
+        title: 'Team work',
+        desiredValue: 95,
+        synapticWeight: 0,
+        answers: []
+      }
+    ]
+  },
+  {
+    title: 'K1',
+    type: 'group_criteria',
+    active: true,
+    desiredValue: 0,
+    weightingFactor: 0,
+    synapticWeight: 10,
+    criteria: [
+      {
+        answers: [],
+        title: 'Successful experience of work on the tasks of the concept of transport in the city, control over the implementation of transport solutions, reduction of environmental impact and assessment of traffic to reduce accidents',
+        desiredValue: 0,
+        synapticWeight: 10
+      },
+      {
+        answers: [],
+        title: 'Possession of professional knowledge, skills, and abilities necessary for the performance of official duties, which is confirmed by education',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'Ability to use professional and qualification training, to perform their duties competently, objectively and impartially',
+        desiredValue: 0,
+        synapticWeight: 10
+      },
+      {
+        answers: [],
+        title: 'Ability to anticipate risks related to the implementation of transport solutions with reduced environmental impact and accidents',
+        desiredValue: 0,
+        synapticWeight: 9
+      },
+      {
+        answers: [],
+        title: 'The ability to make plans to achieve goals, structure responsibilities, follow job descriptions, timely inform others about any changes',
+        desiredValue: 0,
+        synapticWeight: 8
+      }
+    ]
+  },
+  {
+    title: 'K2',
+    type: 'group_criteria',
+    active: true,
+    desiredValue: 0,
+    weightingFactor: 0,
+    synapticWeight: 6,
+    criteria: [
+      {
+        answers: [],
+        title: 'Openness to new ideas, constant movement forward, growth, focus on innovative changes to achieve the most effective result',
+        desiredValue: 0,
+        synapticWeight: 9
+      },
+      {
+        answers: [],
+        title: 'Correct assessment of their strengths and weaknesses, the constant development of professional and personal qualities, the desire to solve complex professional problems for self-development, accumulation of knowledge, and experience',
+        desiredValue: 0,
+        synapticWeight: 7
+      },
+      {
+        answers: [],
+        title: 'Ability to acquire knowledge and implement them in practice',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'Efficiency and systematic thinking',
+        desiredValue: 0,
+        synapticWeight: 7
+      },
+      {
+        answers: [],
+        title: 'Stress resistance and emotional balance',
+        desiredValue: 0,
+        synapticWeight: 7
+      }
+    ]
+  },
+  {
+    title: 'K3',
+    type: 'group_criteria',
+    active: true,
+    desiredValue: 0,
+    weightingFactor: 0,
+    synapticWeight: 8,
+    criteria: [
+      {
+        answers: [],
+        title: 'Communication ability, openness and ability to cooperate',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'Ability to perceive, accumulation, classification, analysis, assimilation, use and transmission of information',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'Teamwork skills',
+        desiredValue: 0,
+        synapticWeight: 8
+      },
+      {
+        answers: [],
+        title: 'Ability to manage people, set tasks, delegate authority, desire to compete in the struggle for supremacy and authority',
+        desiredValue: 0,
+        synapticWeight: 9
+      },
+      {
+        answers: [],
+        title: 'Focus on gaining and maintaining their own reputation, recognition, achievement of goals, respect among people',
         desiredValue: 0,
         synapticWeight: 7
       }

@@ -97,6 +97,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mock, mockUA } from '~/mocks/settings'
 
 export default Vue.extend({
   name: 'DefaultLayout',
@@ -125,6 +126,20 @@ export default Vue.extend({
   computed: {
     availableLocales () {
       return this.$i18n.locales?.filter(i => typeof i !== 'string' && i.code !== this.$i18n.locale)
+    }
+  },
+
+  watch: {
+    '$i18n.locale': {
+      handler (value) {
+        if (value === 'ua') {
+          this.$store.dispatch('settings/setModels', mockUA)
+        }
+        if (value === 'en') {
+          this.$store.dispatch('settings/setModels', mock)
+        }
+      },
+      immediate: true
     }
   },
 

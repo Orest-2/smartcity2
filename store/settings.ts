@@ -29,6 +29,10 @@ export const getters: GetterTree<SettingsState, RootState> = {
 }
 
 export const mutations: MutationTree<SettingsState> = {
+  SET_MODELS (state, models) {
+    state.models = models
+  },
+
   ADD_MODEL (state, model) {
     state.models.push(model)
   },
@@ -111,6 +115,10 @@ export const mutations: MutationTree<SettingsState> = {
 }
 
 export const actions: ActionTree<SettingsState, RootState> = {
+  setModels ({ commit }, models) {
+    commit('SET_MODELS', models)
+  },
+
   addModel ({ commit }, { model }) {
     commit('ADD_MODEL', model)
   },
