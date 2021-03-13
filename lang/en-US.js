@@ -47,4 +47,7 @@ export const en = {
   desired_value: 'Desired value',
   neuro_fuzzy_model_criterion_synaptic_weight: 'Neuro-fuzzy model criterion synaptic weight',
   score: 'Score',
+  settings_id: 'Settings ID',
+  btn_save_settings: 'Save settings',
+  btn_load_settings: 'Load settings',
 }

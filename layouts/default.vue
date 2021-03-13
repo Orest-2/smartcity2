@@ -97,7 +97,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
 import { mock, mockUA } from '~/mocks/settings'
+import { RootState } from '~/types/store'
+
+const state = {
+  sID: (s: RootState) => s.settings.settingsID
+}
+
+export type State = typeof state
 
 export default Vue.extend({
   name: 'DefaultLayout',
@@ -124,6 +132,8 @@ export default Vue.extend({
   },
 
   computed: {
+    ...mapState<RootState, State>(state),
+
     availableLocales () {
       return this.$i18n.locales?.filter(i => typeof i !== 'string' && i.code !== this.$i18n.locale)
     }
@@ -132,11 +142,13 @@ export default Vue.extend({
   watch: {
     '$i18n.locale': {
       handler (value) {
-        if (value === 'ua') {
-          this.$store.dispatch('settings/setModels', mockUA)
-        }
-        if (value === 'en') {
-          this.$store.dispatch('settings/setModels', mock)
+        if (!this.sID) {
+          if (value === 'ua') {
+            this.$store.dispatch('settings/setModels', mockUA)
+          }
+          if (value === 'en') {
+            this.$store.dispatch('settings/setModels', mock)
+          }
         }
       },
       immediate: true

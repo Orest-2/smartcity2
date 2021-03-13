@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
+import axios from 'axios'
 import { RootState } from '~/types/store'
 import { Algorithm, Answer, Criterion, Model } from '~/types/settings'
 
 import { algorithms, mock } from '~/mocks/settings'
 
 export const state = () => ({
+  settingsID: '',
   models: [...mock] as Model[],
   algorithms: { ...algorithms } as Algorithm
 })
@@ -29,8 +31,16 @@ export const getters: GetterTree<SettingsState, RootState> = {
 }
 
 export const mutations: MutationTree<SettingsState> = {
+  SET_SETTINGS_ID (state, id) {
+    state.settingsID = id
+  },
+
   SET_MODELS (state, models) {
     state.models = models
+  },
+
+  SET_ALGORITHMS (state, algorithms) {
+    state.algorithms = algorithms
   },
 
   ADD_MODEL (state, model) {
@@ -115,6 +125,27 @@ export const mutations: MutationTree<SettingsState> = {
 }
 
 export const actions: ActionTree<SettingsState, RootState> = {
+  getSettingsByID ({ commit }, { id }) {
+    axios.get(`/api/settings/${id}`).then(({ data }) => {
+      if (data.data) {
+        commit('SET_MODELS', data.data.models)
+        commit('SET_ALGORITHMS', data.data.algorithms)
+      }
+    })
+  },
+
+  saveSettingsByID ({ state }, { id }) {
+    const payload = {
+      uid: id,
+      data: {
+        models: state.models,
+        algorithms: state.algorithms
+      }
+    }
+
+    axios.post('/api/settings', payload)
+  },
+
   setModels ({ commit }, models) {
     commit('SET_MODELS', models)
   },

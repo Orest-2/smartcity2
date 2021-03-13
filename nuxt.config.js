@@ -3,6 +3,11 @@ import { en } from './lang/en-US'
 import { ua } from './lang/ua-UA'
 
 export default {
+
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/api.ts' },
+  ],
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - Smart City',
