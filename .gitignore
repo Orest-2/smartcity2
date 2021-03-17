@@ -90,4 +90,4 @@ sw.*
 *.swp
 
 # settings
-/api/settings.json
+# /api/settings.json
