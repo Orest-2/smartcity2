@@ -160,6 +160,7 @@ export const actions: ActionTree<SettingsState, RootState> = {
         link.setAttribute('download', filename) // or any other extension
         document.body.appendChild(link)
         link.click()
+        link.remove()
       })
   },
 
