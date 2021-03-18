@@ -219,31 +219,31 @@ export const mockUA: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'Успішний досвід роботи над завданнями концепції транспорту в місті, контроль за реалізацією транспортних рішень, зменшення впливу на навколишнє середовище та оцінка дорожнього руху для зменшення аварій',
+        title: 'Володіння професійними знаннями, уміннями і навичками у транспортній та/або будівельній галузі, що підтверджується освітою: 1. ступінь бакалавра технічного/управлінського спрямування; 2. ступінь магістра технічного/управлінського спрямування; 3. ступінь магістра технічного/управлінського спрямування та наявність різних сертифікатів підвищення кваліфікації; 4. наявний науковий ступінь.',
         desiredValue: 0,
         synapticWeight: 10
       },
       {
         answers: [],
-        title: 'Володіння професійними знаннями, вміннями та навичками, необхідними для виконання службових обов’язків, що підтверджується освітою',
+        title: 'Успішний досвід роботи над різними задачами концепції транспорту в місті, контроль за впровадженням транспортних рішень, зменшення впливу на навколишнє середовище та оцінки дорожнього руху для зменшення аварій: 1. відсутній; 2. наявний для 1 або 2 задач; 3. наявний для 2 або 3 задач; 4. наявний для всіх задач.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Здатність використовувати професійну та кваліфікаційну підготовку, грамотно, об’єктивно та неупереджено виконувати свої обов’язки',
+        title: 'Успішний досвід роботи над інвестиційними, інноваційними чи науковими проектами, програмами, стратегій розвитку, що спрямовані у сфері транспорту та будівництва: 1. відсутній; 2. виконавець проекту; 3. експерт у проекті; 4. керівник проекту.',
         desiredValue: 0,
         synapticWeight: 10
       },
       {
         answers: [],
-        title: 'Здатність передбачати ризики, пов’язані із впровадженням транспортних рішень зі зменшеним впливом на довкілля та аваріями',
+        title: 'Здатність передбачувати ризики, що стосуються впровадженням транспортних рішень із зменшенням впливу на навколишнє середовище та аварій: 1. наявна; 2. середня; 3. висока; 4. дуже висока.',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'Можливість складати плани досягнення цілей, структурувати обов\'язки, дотримуватися посадових інструкцій, своєчасно інформувати інших про будь-які зміни',
+        title: 'Розуміння ціноутворення послуг перевезення пасажирів на громадському транспорті: 1. наявне; 2. учасник проекту по даній тематиці; 3. ступінь бакалавра економічних спеціальностей; 4. ступінь магістра або PhD економічних спеціальностей.',
         desiredValue: 0,
         synapticWeight: 8
       }
@@ -259,31 +259,31 @@ export const mockUA: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'Відкритість для нових ідей, постійний рух вперед, зростання, орієнтація на інноваційні зміни для досягнення максимально ефективного результату',
+        title: 'Комунікаційна здатність, відкритість та здатність до співпраці з різними партнерами: 1. наявна; 2. середня; 3. висока; 4. дуже висока.',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'Правильна оцінка їх сильних і слабких сторін, постійний розвиток професійних та особистих якостей, бажання вирішувати складні професійні завдання для саморозвитку, накопичення знань та досвіду',
+        title: 'Наявність публікацій по проблематиці аналізу, розвитку, інновацій у транспортній сфері та концепції Розумного Міста: 1. відсутні; 2. наявна публікація; 3. наявні статті наукового характеру; 4. велика кількість статей.',
         desiredValue: 0,
         synapticWeight: 7
       },
       {
         answers: [],
-        title: 'Здатність здобувати знання та застосовувати їх на практиці',
+        title: 'Навички роботи в команді: 1. відсутній досвід; 2. досвід виконання проектної роботи в команді; 3. керівник середньої ланки; 4. керівник вищої ланки.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Ефективність та систематичність мислення',
+        title: 'Уміння керувати людьми, ставити завдання, делегувати повноваження, бажання змагатися в боротьбі за першість і авторитет: 1. відсутній; 2. наявний досвід у керуванні людьми; 3. керівник середньої ланки або досвід викладацької роботи; 4. керівник вищої ланки.',
         desiredValue: 0,
         synapticWeight: 7
       },
       {
         answers: [],
-        title: 'Стресостійкість та емоційна рівновага',
+        title: 'Орієнтація на завоювання і збереження власної репутації, визнання, досягнення поставлених цілей, пошани серед людей: 1. наявна динаміка; 2. середня динаміка; 3. висока динаміка; 4. дуже висока динаміка.',
         desiredValue: 0,
         synapticWeight: 7
       }
@@ -299,31 +299,31 @@ export const mockUA: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'Здатність до спілкування, відкритість та здатність до співпраці',
+        title: 'Відкритість новим ідеям, постійний рух вперед, ріст, орієнтація на інноваційні зміни для досягнення найефективнішого результату: 1. незначна; 2. середня; 3. значна; 4. інтенсивна.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Здатність сприймати, накопичувати, класифікувати, аналізувати, засвоювати, використовувати та передавати інформацію',
+        title: 'Правильна оцінка своїх сильних і слабких сторін, постійний розвиток професійних та особистісних якостей, прагнення до вирішення складних професійних завдань з метою саморозвитку, накопичення знань та досвіту: 1. наявне; 2. середнє; 3. високе; 4. дуже високе.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Навички колективної роботи',
+        title: 'Здатність до засвоювання знань та їх реалізації у практичній діяльності: 1. наявна; 2. середня; 3. висока; 4. дуже висока.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Вміння керувати людьми, ставити завдання, делегувати повноваження, бажання змагатися в боротьбі за верховенство і владу',
+        title: 'Оперативність та системність мислення: 1. наявна; 2. середня; 3. висока; 4. дуже висока.',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'Зосередьтеся на здобутті та підтримці власної репутації, визнанні, досягненні цілей, повазі серед людей',
+        title: 'Стресостійкість та емоційна врівноваженість: 1. наявна; 2. середня; 3. висока; 4. дуже висока.',
         desiredValue: 0,
         synapticWeight: 7
       }
@@ -550,31 +550,31 @@ export const mock: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'Successful experience of work on the tasks of the concept of transport in the city, control over the implementation of transport solutions, reduction of environmental impact and assessment of traffic to reduce accidents',
+        title: 'Possession of professional knowledge, skills, and abilities in the transport and/or construction industry, which is confirmed by education: 1. Bachelors degree in technical/managerial direction; 2. Masters degree in technical/managerial direction; 3. Masters degree in technical/managerial orientation and availability of various advanced training certificates; 4. Available scientific degree.',
         desiredValue: 0,
         synapticWeight: 10
       },
       {
         answers: [],
-        title: 'Possession of professional knowledge, skills, and abilities necessary for the performance of official duties, which is confirmed by education',
+        title: 'Successful experience of work on various tasks of the concept of transport in the city, control over the implementation of transport solutions, reduction of environmental impact, and traffic assessment to reduce accidents: 1. Absent; 2. Available for 1 or 2 tasks; 3. Available for 2 or 3 tasks; 4. Available for all tasks.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Ability to use professional and qualification training, to perform their duties competently, objectively and impartially',
+        title: 'Successful experience of work on investment, innovative or scientific projects, programs, development strategies aimed at transport and construction: 1. Absent; 2. Project executor; 3. Expert in the project; 4. Project manager.',
         desiredValue: 0,
         synapticWeight: 10
       },
       {
         answers: [],
-        title: 'Ability to anticipate risks related to the implementation of transport solutions with reduced environmental impact and accidents',
+        title: 'Ability to anticipate risks related to the implementation of transport solutions with reduced environmental impact and accidents: 1. Available; 2. Average; 3. High; 4. Very high.',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'The ability to make plans to achieve goals, structure responsibilities, follow job descriptions, timely inform others about any changes',
+        title: 'Understanding of pricing of passenger transportation services on public transport: 1. Available; 2. Project participant on this topic: 1. Available; 2. Project participant on this topic; 3. Bachelors degree in economics; 4. Masters degree or Ph.D. in economics.',
         desiredValue: 0,
         synapticWeight: 8
       }
@@ -590,31 +590,31 @@ export const mock: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'Openness to new ideas, constant movement forward, growth, focus on innovative changes to achieve the most effective result',
+        title: 'Communication ability, openness and ability to cooperate with different partners: 1. Insignificant; 2. Average; 3. Significant; 4. Intensive.',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'Correct assessment of their strengths and weaknesses, the constant development of professional and personal qualities, the desire to solve complex professional problems for self-development, accumulation of knowledge, and experience',
+        title: 'Availability of publications on the issues of analysis, development, innovations in the field of transport and the concept of Smart City: 1. Absent; 2. Available publication; 3. Available articles of a scientific nature; 4. Numerous articles.',
         desiredValue: 0,
         synapticWeight: 7
       },
       {
         answers: [],
-        title: 'Ability to acquire knowledge and implement them in practice',
+        title: 'Teamwork skills: 1. No experience; 2. Experience of project work in a team; 3. Middle manager; 4. Senior manager.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Efficiency and systematic thinking',
+        title: 'Ability to manage people, set tasks, delegate authority, desire to compete in the struggle for supremacy and authority: 1. Absent; 2. Available experience in people management; 3. The middle manager or teaching experience; 4. Senior manager.',
         desiredValue: 0,
         synapticWeight: 7
       },
       {
         answers: [],
-        title: 'Stress resistance and emotional balance',
+        title: 'Focus on winning and maintaining their own reputation, recognition, the achievement of goals, respect among people: 1. The current dynamics; 2. Average dynamics; 3. High dynamics; 4. Very high dynamics.',
         desiredValue: 0,
         synapticWeight: 7
       }
@@ -630,31 +630,31 @@ export const mock: Model[] = [
     criteria: [
       {
         answers: [],
-        title: 'Communication ability, openness and ability to cooperate',
+        title: 'Openness to new ideas, constant movement forward, growth, focus on innovative changes to achieve the most effective result: 1. Insignificant; 2. Average; 3. Significant; 4. Intensive.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Ability to perceive, accumulation, classification, analysis, assimilation, use and transmission of information',
+        title: 'The correct assessment of their strengths and weaknesses, the constant development of professional and personal qualities, the desire to solve complex professional problems for self-development, accumulation of knowledge and experience: 1. Available; 2. Average; 3. High; 4. Very high.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Teamwork skills',
+        title: 'Ability to acquire knowledge and their implementation in practice: 1. Available; 2. Average; 3. High; 4. Very high.',
         desiredValue: 0,
         synapticWeight: 8
       },
       {
         answers: [],
-        title: 'Ability to manage people, set tasks, delegate authority, desire to compete in the struggle for supremacy and authority',
+        title: 'Efficiency and systematic thinking: 1. Available; 2. Average; 3. High; 4. Very high.',
         desiredValue: 0,
         synapticWeight: 9
       },
       {
         answers: [],
-        title: 'Focus on gaining and maintaining their own reputation, recognition, achievement of goals, respect among people',
+        title: 'Stress resistance and emotional balance: 1. Available; 2. Average; 3. High; 4. Very high.',
         desiredValue: 0,
         synapticWeight: 7
       }
