@@ -74,6 +74,7 @@ export const ua = {
   neuro_fuzzy_model_criterion_synaptic_weight: 'Синаптична вага критерію нейро-нечіткої моделі',
   score: 'Оцінка',
   settings_id: 'ID Налаштування',
+  settings_file: 'Файл налаштувань',
   btn_save_settings: 'Зберегти налаштування',
   btn_load_settings: 'Завантажити налаштування',
 }

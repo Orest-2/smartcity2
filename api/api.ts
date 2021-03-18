@@ -1,54 +1,49 @@
 import fs from 'fs'
+import path from 'path'
 import express from 'express'
 import { json } from 'body-parser'
+import multer from 'multer'
 
 const app = express()
 
-const getData = () => {
-  try {
-    if (fs.existsSync('./api/settings.json')) {
-      return require('./settings.json')
-    } else {
-      return {}
-    }
-  } catch (err) {
-    return {}
+const upload = multer()
+
+app.post(
+  '/settings/read',
+  upload.single('settings_file'),
+  (req, res) => {
+    const json = JSON.parse(req.file.buffer.toString())
+
+    res.json({ data: json })
   }
-}
-
-app.get('/settings', (req, res) => {
-  const keys = req.query.keys
-
-  let data = getData()
-
-  if (keys === '1') {
-    data = Object.keys(data)
-  }
-
-  res.json({ data })
-})
-
-app.get('/settings/:uid', (req, res) => {
-  const settings = getData()
-
-  const data = settings?.[req.params.uid]
-
-  res.json({ data })
-})
+)
 
 const jsonParser = json()
 
-app.post('/settings', jsonParser, (req, res) => {
-  const settings = getData()
+app.post('/settings/save', jsonParser, (req, res) => {
+  const { data } = req.body
+  const settingsStr = JSON.stringify(data, null, 2)
 
-  const { uid, data } = req.body
+  const filename = `settings_${Date.now()}.json`
+  const absPath = path.join(__dirname, '/temp/', filename)
+  const relPath = path.join('./api/temp', filename) // path relative to server root
 
-  settings[uid] = data
-
-  const settingsStr = JSON.stringify(settings, null, 2)
-  fs.writeFileSync('./api/settings.json', settingsStr)
-
-  res.json({ data: { uid, settings } })
+  fs.writeFile(relPath, settingsStr, (err) => {
+    if (err) {
+      console.log('1', err)
+    }
+    res.download(absPath, (err) => {
+      if (err) {
+        console.log('2', err)
+      }
+      fs.unlink(relPath, (err) => {
+        if (err) {
+          console.log('3', err)
+        }
+        console.log('FILE [' + filename + '] REMOVED!')
+      })
+    })
+  })
 })
 
 export default app

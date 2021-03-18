@@ -102,7 +102,7 @@ import { mock, mockUA } from '~/mocks/settings'
 import { RootState } from '~/types/store'
 
 const state = {
-  sID: (s: RootState) => s.settings.settingsID
+  settingsFile: (s: RootState) => s.settings.settingsFile
 }
 
 export type State = typeof state
@@ -142,7 +142,7 @@ export default Vue.extend({
   watch: {
     '$i18n.locale': {
       handler (value) {
-        if (!this.sID) {
+        if (!this.settingsFile) {
           if (value === 'ua') {
             this.$store.dispatch('settings/setModels', mockUA)
           }

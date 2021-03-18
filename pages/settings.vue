@@ -15,17 +15,15 @@
           justify="center"
         >
           <v-col
-            cols="2"
+            cols="4"
           >
-            <v-form v-model="settingsIDValid">
-              <v-text-field
-                v-model="settingsID"
-                :rules="settingsIDRules"
-                :counter="20"
-                :label="$t('settings_id')"
-                required
-              />
-            </v-form>
+            <v-file-input
+              v-model="file"
+              :rules="settingsFileRules"
+              :label="$t('settings_file')"
+              accept="application/json"
+              show-size
+            />
           </v-col>
           <v-col
             cols="4"
@@ -34,7 +32,7 @@
             <v-btn
               color="primary"
               elevation="2"
-              :disabled="!settingsIDValid"
+              :disabled="!file"
               @click="getS"
             >
               {{ $t('btn_load_settings') }}
@@ -43,7 +41,6 @@
             <v-btn
               color="success"
               elevation="2"
-              :disabled="!settingsIDValid"
               @click="saveS"
             >
               {{ $t('btn_save_settings') }}
@@ -131,7 +128,7 @@ import Algorithm from '~/components/settings/algorithm.vue'
 
 const state = {
   models: (s: RootState) => s.settings.models,
-  sID: (s: RootState) => s.settings.settingsID
+  settingsFile: (s: RootState) => s.settings.settingsFile
 }
 
 export type State = typeof state
@@ -146,10 +143,8 @@ export default Vue.extend({
   data () {
     return {
       tab: 0,
-      settingsIDValid: true,
-      settingsIDRules: [
-        (v: string) => !!v || 'Required',
-        (v: string) => v.length <= 20 || 'Must be less than 10 characters',
+      settingsFileRules: [
+        (value: null | File) => !value || value.size < 1000000 || 'File size should be less than 1 MB!',
       ]
     }
   },
@@ -157,28 +152,28 @@ export default Vue.extend({
   computed: {
     ...mapState<RootState, State>(state),
 
-    settingsID: {
-      get (): string {
-        return this.sID
+    file: {
+      get (): null | File {
+        return this.settingsFile
       },
-      set (v: string) {
-        this.$store.commit('settings/SET_SETTINGS_ID', v)
+      set (f: null | File) {
+        this.$store.commit('settings/SET_SETTINGS_FILE', f)
       }
     }
   },
 
   methods: {
     ...mapActions({
-      getSettingsByID: 'settings/getSettingsByID',
-      saveSettingsByID: 'settings/saveSettingsByID'
+      getSettingsFromFile: 'settings/getSettingsFromFile',
+      saveSettingsToFile: 'settings/saveSettingsToFile'
     }),
 
     getS (): void {
-      this.getSettingsByID({ id: this.settingsID })
+      this.getSettingsFromFile({ file: this.file })
     },
 
     saveS (): void {
-      this.saveSettingsByID({ id: this.settingsID })
+      this.saveSettingsToFile()
     }
   },
 

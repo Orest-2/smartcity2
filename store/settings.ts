@@ -7,7 +7,7 @@ import { Algorithm, Answer, Criterion, Model } from '~/types/settings'
 import { algorithms, mock } from '~/mocks/settings'
 
 export const state = () => ({
-  settingsID: '',
+  settingsFile: null as null | File,
   models: [...mock] as Model[],
   algorithms: { ...algorithms } as Algorithm
 })
@@ -31,8 +31,8 @@ export const getters: GetterTree<SettingsState, RootState> = {
 }
 
 export const mutations: MutationTree<SettingsState> = {
-  SET_SETTINGS_ID (state, id) {
-    state.settingsID = id
+  SET_SETTINGS_FILE (state, file) {
+    state.settingsFile = file
   },
 
   SET_MODELS (state, models) {
@@ -125,25 +125,42 @@ export const mutations: MutationTree<SettingsState> = {
 }
 
 export const actions: ActionTree<SettingsState, RootState> = {
-  getSettingsByID ({ commit }, { id }) {
-    axios.get(`/api/settings/${id}`).then(({ data }) => {
-      if (data.data) {
-        commit('SET_MODELS', data.data.models)
-        commit('SET_ALGORITHMS', data.data.algorithms)
-      }
-    })
+  getSettingsFromFile ({ commit }, { file }) {
+    const payload = new FormData()
+
+    payload.append('settings_file', file)
+
+    axios.post('/api/settings/read', payload)
+      .then(({ data }) => {
+        if (data.data) {
+          commit('SET_MODELS', data.data.models)
+          commit('SET_ALGORITHMS', data.data.algorithms)
+        }
+      })
   },
 
-  saveSettingsByID ({ state }, { id }) {
+  saveSettingsToFile ({ state }) {
     const payload = {
-      uid: id,
       data: {
         models: state.models,
         algorithms: state.algorithms
       }
     }
 
-    axios.post('/api/settings', payload)
+    axios.post('/api/settings/save', payload, { responseType: 'blob' })
+      .then(({ data, headers }) => {
+        const headerLine = headers['content-disposition']
+        const startFileNameIndex = headerLine.indexOf('"') + 1
+        const endFileNameIndex = headerLine.lastIndexOf('"')
+        const filename = headerLine.substring(startFileNameIndex, endFileNameIndex)
+
+        const url = window.URL.createObjectURL(new Blob([data]))
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', filename) // or any other extension
+        document.body.appendChild(link)
+        link.click()
+      })
   },
 
   setModels ({ commit }, models) {
