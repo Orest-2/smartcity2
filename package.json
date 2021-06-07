@@ -30,7 +30,7 @@
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@types/multer": "^1.4.5",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.28.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "stylelint": "^13.9.0",
     "stylelint-config-standard": "^20.0.0"
