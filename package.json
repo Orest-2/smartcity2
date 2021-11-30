@@ -13,13 +13,13 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",
-    "@nuxtjs/axios": "^5.13.0",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/vuetify": "^1.11.3",
     "axios": "^0.21.1",
-    "core-js": "^3.8.3",
-    "multer": "^1.4.2",
+    "core-js": "^3.19.2",
+    "multer": "^1.4.3",
     "nuxt": "^2.14.12",
-    "nuxt-i18n": "^6.20.0"
+    "nuxt-i18n": "^6.28.1"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
@@ -28,7 +28,7 @@
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",
-    "@types/multer": "^1.4.5",
+    "@types/multer": "^1.4.7",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
     "eslint-plugin-nuxt": "^1.0.0",
