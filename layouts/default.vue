@@ -97,6 +97,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { LocaleObject } from 'nuxt-i18n'
 import { mapState } from 'vuex'
 import { mock, mockUA } from '~/mocks/settings'
 import { RootState } from '~/types/store'
@@ -135,7 +136,9 @@ export default Vue.extend({
     ...mapState<RootState, State>(state),
 
     availableLocales () {
-      return this.$i18n.locales?.filter(i => typeof i !== 'string' && i.code !== this.$i18n.locale)
+      const l = this.$i18n.locales as LocaleObject[]
+
+      return l.filter(el => el.code !== this.$i18n.locale)
     }
   },
 

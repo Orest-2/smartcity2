@@ -12,6 +12,11 @@ app.post(
   '/settings/read',
   upload.single('settings_file'),
   (req, res) => {
+    if (!req.file) {
+      res.json({ data: {} })
+      return
+    }
+
     const json = JSON.parse(req.file.buffer.toString())
 
     res.json({ data: json })
